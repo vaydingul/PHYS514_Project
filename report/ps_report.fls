@@ -1,7 +1,7 @@
-PWD c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report
+PWD c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report
 INPUT C:\Users\volkan\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.tex
-OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.log
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.tex
+OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.log
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12.clo
@@ -120,9 +120,9 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdft
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.aux
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.aux
-OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.aux
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.aux
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.aux
+OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.aux
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty
@@ -133,19 +133,19 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\namer
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.pdf
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\koc_logo.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\koc_logo.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\koc_logo.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\koc_logo.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\koc_logo.png
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.pdf
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\figures\koc_logo.png
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\figures\koc_logo.png
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\figures\koc_logo.png
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\figures\koc_logo.png
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\figures\koc_logo.png
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
@@ -155,9 +155,10 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti
 INPUT C:\Users\volkan\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.toc
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.toc
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
@@ -179,132 +180,25 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.toc
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd
+OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_8_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_8_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_8_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_8_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_8_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_10_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_10_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_10_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_10_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_10_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_20_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_20_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_20_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_20_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_20_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_30_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_30_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_30_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_30_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_30_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_50_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_50_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_50_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_50_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_50_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_Standart_Eigenvalue_Solver_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_Standart_Eigenvalue_Solver_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_Standart_Eigenvalue_Solver_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_Standart_Eigenvalue_Solver_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\1_Standart_Eigenvalue_Solver_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Tridiagonal_Toeplitz_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Tridiagonal_Toeplitz_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Tridiagonal_Toeplitz_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Tridiagonal_Toeplitz_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Tridiagonal_Toeplitz_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Banded_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Banded_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Banded_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Banded_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Banded_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Standart_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Symmetric_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Symmetric_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Symmetric_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Symmetric_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_Symmetric_Eigenvalue_Solver_d_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\2_40_d_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\3_1024_d_eigen_solver_speed.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\3_1024_d_eigen_solver_speed.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\3_1024_d_eigen_solver_speed.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\3_1024_d_eigen_solver_speed.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\3_1024_d_eigen_solver_speed.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\4_40_Symmetric_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\4_40_Symmetric_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\4_40_Symmetric_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\4_40_Symmetric_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\4_40_Symmetric_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\5_40_Standart_Eigenvalue_Solver_n_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\6_40_Symmetric_Eigenvalue_Solver_p_eigenvector.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\7_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenfunctions.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\figures\8_eigenvalue.png
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.aux
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
-INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Problem_Sets\ps7\solution\report\ps_report.out
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.aux
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
+INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
@@ -319,5 +213,3 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfo
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\symbols\msbm10.pfb
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\symbols\msbm10.pfb
