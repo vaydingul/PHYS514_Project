@@ -30,6 +30,8 @@ class UtilsTest(unittest.TestCase):
 
     def test_read_dw_data_shape_1(self):
         self.assertEqual(self.data.shape[1], 2)
+
+
 if __name__ == "__main__":
 
     unittest.main()
