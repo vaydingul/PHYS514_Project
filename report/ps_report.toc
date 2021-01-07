@@ -14,3 +14,8 @@
 \contentsline {paragraph}{}{3}{section*.13}% 
 \contentsline {paragraph}{}{4}{section*.14}% 
 \contentsline {paragraph}{}{4}{section*.15}% 
+\contentsline {subsection}{\numberline {1.2}Relation Between Mass and Radius}{4}{subsection.1.2}% 
+\contentsline {paragraph}{}{4}{section*.16}% 
+\contentsline {paragraph}{}{4}{section*.17}% 
+\contentsline {paragraph}{}{5}{section*.18}% 
+\contentsline {paragraph}{}{5}{section*.19}% 

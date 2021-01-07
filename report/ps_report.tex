@@ -169,9 +169,10 @@ Therefore,
 
 \paragraph{} Followingly, another transformation that should be applied might be:
 
-\begin{equation*}
+\begin{equation}
+    \label{eq:alpha}
     \alpha^2 = \frac{K \rho_c^{\frac{1}{n}-1} \left(n+1\right)}{4 \pi G} \rightarrow r = \alpha \xi
-\end{equation*}
+\end{equation}
 
 \paragraph{} Then, \eqref{eq:totder-2} can be written as:
 
@@ -207,27 +208,89 @@ Therefore,
 After the change of variables,
 
 \begin{equation*}
-    M = \int_0^\Xi {4 \pi \alpha^2 \xi^2 \rho_c \theta^n (\xi)} \alpha d\xi
+    M = \int_0^{\xi_*} {4 \pi \alpha^2 \xi^2 \rho_c \theta^n (\xi)} \alpha d\xi
 \end{equation*}
-where $\Xi = \frac{R}{\alpha}$
+where ${\xi_*} = \frac{R}{\alpha}$
 \begin{equation*}
-    M =4 \pi \rho_c \alpha^3 \int_0^\Xi {\xi^2 \theta^n (\xi)} d\xi
+    M =4 \pi \rho_c \alpha^3 \int_0^{\xi_*} {\xi^2 \theta^n (\xi)} d\xi
 \end{equation*}
 
 \paragraph{} By using the relation in \eqref{eq:final}, one can deduce that:
 
 \begin{equation*}
-    M =4 \pi \rho_c \alpha^3 \int_0^\Xi {\xi^2 \frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right) } d\xi
+    M =4 \pi \rho_c \alpha^3 \int_0^{\xi_*} -{\xi^2 \frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right) } d\xi
 \end{equation*}
 
 \begin{equation*}
-    M = 4 \pi \rho_c \alpha^3 \Xi^2 \theta' = 4 \pi \rho_c \alpha^3 \Xi^3 \frac{\theta'}{\Xi}
+    M = 4 \pi \rho_c \alpha^3 {\xi_*}^2 \theta' = 4 \pi \rho_c \alpha^3 {\xi_*}^3 \frac{-\theta'}{{\xi_*}}
 \end{equation*}
 \paragraph{} Finally, the total mass can be read as:
+\begin{equation}
+    \label{eq:mass}
+\boxed{ M = 4 \pi \rho_c R^3 \frac{-\theta'}{{\xi_*}}}
+\end{equation}
+
+
+\subsection{Relation Between Mass and Radius}
+
+\paragraph{} For a group of stars sharing same polytopic EOS, one can write a common relation between mass and radius. The first thing that should be implemented is previous version of the \eqref{eq:mass}:
 \begin{equation*}
-\boxed{ M = 4 \pi \rho_c R^3 \frac{\theta'}{\Xi}}
+    M = 4 \pi \rho_c \alpha^3 {\xi_*}^2 \theta' = 4 \pi \rho_c \alpha^3 {\xi_*}^3 \frac{-\theta'}{{\xi_*}}
 \end{equation*}
 
+Replacing $\alpha$ with \eqref{eq:alpha}:
+
+\begin{equation*}
+    M = 4 \pi \left[\frac{K \rho_c^{\frac{1}{n}-1}\left(n+1\right)}{4 \pi G}\right]^{\frac{3}{2}} \rho_c \xi_*^2 \left[-\theta'(\xi_*)\right]
+\end{equation*}
+
+Rearranging the terms:
+
+\begin{equation}
+    \label{eq:mass2}
+    M = 4 \pi \left[\frac{K\left(n+1\right)}{4 \pi G}\right]^{\frac{3}{2}} \rho_c^{\frac{3-n}{2n}} \xi_*^2 \left[-\theta'(\xi_*)\right]
+\end{equation}
+
+\paragraph{} At the same time, one should consider the \textit{radius} equation, which reads:
+
+\begin{equation}
+    \label{eq:radius}
+    R = \alpha \xi_* = \left[\frac{K \rho_c^{\frac{1}{n}-1}\left(n+1\right)}{4 \pi G}\right]^{\frac{1}{2}}\xi_* = \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{1}{2}} \rho_c^{\frac{1-n}{2n}} \xi_*
+\end{equation}
+
+\paragraph{} Now, to be able to construct a relation between mass and radius assuming that the group of stars share same polytopic properties, the $\rho_c$ term should be eliminated from the equation. Therefore, the second process that should be implemented is to find an expression for the $\rho_c$, from which \eqref{eq:mass2} :
+
+\begin{equation}
+    \label{eq:rho_c}
+    \rho_c = \left[\frac{M}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}\right]^{\frac{2n}{3-n}}
+\end{equation}
+
+Plugging \eqref{eq:rho_c} into \eqref{eq:radius}:
+
+\begin{equation*}
+    R = \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{1}{2}} \left[\frac{M}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}\right]^{\frac{1-n}{3-n}} \xi_* 
+\end{equation*}
+
+\begin{equation*}
+    R =  \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{1}{2}} \left[\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}\right]^{\frac{1-n}{3-n}} \xi_* M^{\frac{1-n}{3-n}} 
+\end{equation*}
+
+which asserts that:
+
+\begin{equation*}
+    M \approx R^{\frac{3-n}{1-n}}
+\end{equation*}
+
+\paragraph{} Finally, the constant of proportionality can be written as:
+
+\begin{equation*}
+    M = C(n, \xi_*) R^{\frac{3-n}{1-n}} 
+\end{equation*}
+where 
+
+\begin{equation*}
+    C(n, \xi_*) =  \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{-1}{2}} \left[\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}\right]^{\frac{n-1}{3-n}} \xi_* 
+\end{equation*}
 \end{document}
 
 
