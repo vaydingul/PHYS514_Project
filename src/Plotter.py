@@ -7,7 +7,6 @@ def plot_(x_list, y_list, labels = None, xlabel = None, ylabel = None, title = N
     docstring
     """
     markers = ["o", "^", "h", "s", ".", "p"]
-    plt.figure()
     cnt = 0
 
     if labels is not None:
@@ -41,7 +40,6 @@ def scatter_(x_list, y_list, labels = None, xlabel = None, ylabel = None, title 
     docstring
     """
     markers = ["o", "^", "h", "s", ".", "p"]
-    plt.figure()
     cnt = 0
 
     if labels is not None:
@@ -51,7 +49,7 @@ def scatter_(x_list, y_list, labels = None, xlabel = None, ylabel = None, title 
                 cnt += 1
         else:
             for y_ in y_list:
-                plt.plot(x_list, y_, label = labels[cnt], marker = markers[cnt])
+                plt.scatter(x_list[0], y_, label = labels[cnt], marker = markers[cnt])
                 cnt += 1
     else:
         if len(x_list) == len(y_list):
@@ -66,9 +64,9 @@ def scatter_(x_list, y_list, labels = None, xlabel = None, ylabel = None, title 
     if xlabel is not None: plt.xlabel(xlabel)
     if ylabel is not None: plt.ylabel(ylabel)
     if title is not None: plt.title(title)
-    
+    if labels is not None: plt.legend(loc = "best")
     plt.tight_layout()
 
 
-
+def figure_(): plt.figure()
 def show_(): plt.show()
