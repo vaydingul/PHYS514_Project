@@ -5,7 +5,25 @@ import csv
 
 def read_dw_data(fname, out_type = "np"):
     """
-    docstring
+    read_dw_data:
+    data = read_dw_data(fname, out_type = "np")
+
+    This function perform the following processes:
+        - It reads the ´White Dwarf´data
+        - It outputs based on the specified data type 
+        
+
+    Input:
+        fname = The directory of the file to be read
+        out_type = Output type ==> NumPy array, or Python List
+        
+    Output:
+        data = Output data, which is the concatenated form of the log(g) and mass
+
+    Example:
+        # Data reading and partitioning
+        data = u.read_dw_data(DATA_PATH)
+        logg = data[:,0]; mass = data[:,1];
     """
     data = [] # Data list initialization 
     with open(fname, "r") as f:
@@ -26,9 +44,33 @@ def read_dw_data(fname, out_type = "np"):
         return data
 
 
-def logg_2_aer(val_mass, val_logg):
+def general_conversion(val_mass, val_logg):
     """
-    docstring
+    general_conversion:
+    mass_kg, R_m, R_aer = general_conversion(mass, logg)
+
+    This function perform the following processes:
+        - It converts the log(g) data to radius in ´meters´
+            and ´average earth radius´
+        - It converts mass in ´solar mass´ to ´kg´
+        
+    Input:
+        val_mass = Mass input  (in solar mass)
+        val_logg = Log(g) input
+        
+    Output:
+        mass_kg = Mass in kilograms
+        R_m = Radius in meters
+        R_aer = Radius in average earth radius
+
+    Example:
+        
+        # Data reading and partitioning
+        data = u.read_dw_data(DATA_PATH)
+        logg = data[:,0]; mass = data[:,1]; mean_mass = np.mean(mass)
+        mass_kg, R_m, R_aer = u.general_conversion(mass, logg)
+
+
     """
     
     
@@ -44,6 +86,9 @@ def logg_2_aer(val_mass, val_logg):
 
     return mass_kg, R_m, R_aer 
 
+
+# It convert given ´q value to ´n´ value :p 
+def q2n(q): return q / (5-q)
 
     
     
