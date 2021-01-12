@@ -1,4 +1,5 @@
-\contentsline {section}{\numberline {1}Derivation of \textit {Lane-Emden Equation}}{2}{section.1}% 
+\contentsline {section}{\numberline {1}Newtonian Approach}{2}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Derivation of \textit {Lane-Emden Equation}}{2}{subsection.1.1}% 
 \contentsline {paragraph}{}{2}{section*.2}% 
 \contentsline {paragraph}{}{2}{section*.3}% 
 \contentsline {paragraph}{}{2}{section*.4}% 
@@ -10,12 +11,16 @@
 \contentsline {paragraph}{}{3}{section*.10}% 
 \contentsline {paragraph}{}{3}{section*.11}% 
 \contentsline {paragraph}{}{3}{section*.12}% 
-\contentsline {subsection}{\numberline {1.1}Calculation of Total Mass}{3}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Calculation of Total Mass}{3}{subsection.1.2}% 
 \contentsline {paragraph}{}{3}{section*.13}% 
 \contentsline {paragraph}{}{4}{section*.14}% 
 \contentsline {paragraph}{}{4}{section*.15}% 
-\contentsline {subsection}{\numberline {1.2}Relation Between Mass and Radius}{4}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}Relation Between Mass and Radius}{4}{subsection.1.3}% 
 \contentsline {paragraph}{}{4}{section*.16}% 
 \contentsline {paragraph}{}{4}{section*.17}% 
 \contentsline {paragraph}{}{5}{section*.18}% 
 \contentsline {paragraph}{}{5}{section*.19}% 
+\contentsline {subsection}{\numberline {1.4}Interpreting the Raw Data}{5}{subsection.1.4}% 
+\contentsline {paragraph}{}{5}{section*.20}% 
+\contentsline {subsubsection}{\numberline {1.4.1}White Dwarf Data}{5}{subsubsection.1.4.1}% 
+\contentsline {paragraph}{}{5}{section*.21}% 

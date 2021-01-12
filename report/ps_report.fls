@@ -158,7 +158,7 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx
 INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
 INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
@@ -181,9 +181,10 @@ INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfont
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 OUTPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.toc
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
-INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti8.tfm
+INPUT C:\Users\volkan\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti7.tfm
 INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.aux
 INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out
 INPUT c:\Users\volkan\Desktop\Graduate\Graduate_Era\Courses\PHYS_514\Project\PHYS514_Project\report\ps_report.out

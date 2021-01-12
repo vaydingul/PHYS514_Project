@@ -211,7 +211,7 @@ def lane_emden(xi, theta, n):
         return [theta[1], 0]
 
 
-def calculate_rho_c(M, K, n):
+def calculate_rho_c(M=None, R=None, K=None, n=None):
     """
     calculate_rho_c:
 
@@ -240,10 +240,13 @@ def calculate_rho_c(M, K, n):
     xi_star = xi[-1]
     theta_dot_xi_star = theta[1, -1]
 
-    return ((M / (4 * np.pi)) * (((4 * np.pi * c.G) / (K * (n + 1))) ** 1.5) * (1 / ((xi_star ** 2) * (-theta_dot_xi_star)))) ** ((2 * n) / (3 - n))
+    if R is None:
+        return ((M / (4 * np.pi)) * (((4 * np.pi * c.G) / (K * (n + 1))) ** 1.5) * (1 / ((xi_star ** 2) * (-theta_dot_xi_star)))) ** ((2 * n) / (3 - n))
+    else:
+        return ((R) / ((((K * (n + 1)) / (4 * np.pi * c.G)) ** 0.5) * (xi_star))) ** ((2 * n) / (1 - n))
 
 
-def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, rho_c_list=None, type="Kq"):
+def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=None, type="Kq"):
     """
     white_dwarf_fit:
 
@@ -257,7 +260,7 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, rho_c_list=None, type=
     Input:
         M = Mass vector to be fitted
         R = Radius vector to be fitted
-        K, C, q, D = Constant
+        K, C, q, D, A = Constant
         rho_c_list = Rho_c sweep for D calculation
         type = It specifies which parameters are optimized
 
@@ -293,6 +296,7 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, rho_c_list=None, type=
                     # Monkey patching
                     def mrr_(R, K): return mass_radius_relation(R=R, K=K, q=q)
 
+
             else:
 
                 if type == "D":
@@ -316,6 +320,16 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, rho_c_list=None, type=
 
                     # Monkey patching to Monkey Patching - 1
                     def mrr_(R, D): return mrr(R=R, K=K, q=q, D=D)
+    else:
+        if A is not None:
+
+            if type == "Aq":
+                y_0 = [A, q]
+                def mrr_(R, A, q): return mass_radius_relation(R = R, q = q, A = A)
+
+            elif type == "A":
+                y_0 = [A]
+                def mrr_(R, A): return mass_radius_relation(R = R, q = q, A = A)
 
     # Solution of the curve-fitting problem
     popt, _ = curve_fit(f=mrr_, xdata=R, ydata=M, p0=y_0)
@@ -323,7 +337,7 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, rho_c_list=None, type=
     return popt
 
 
-def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None):
+def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A = None):
     """
     mass_radius_relation:
 
@@ -336,7 +350,7 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None):
 
     Input:
         R = Radius vector to be fitted
-        K, C, q, D = Constant
+        K, C, q, D, A = Constant
         rho_c = Rho_c
 
     Output:
@@ -366,12 +380,26 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None):
                 return mass_radius_relation_(R, K, n, xi_star, theta_dot_xi_star)
 
             else:
-
+                
                 print("q should be defined!")
 
         else:
 
-            print("K should be defined!")
+            if A is not None:
+
+                # If K and q are given
+                n = q/(5-q)
+
+                return _mass_radius_relation(R, A, n)
+
+                # Solution of Lane-Emden equation
+                #xi, theta = solve_lane_emden(n)
+                # The following are required for the mass calculation
+                #xi_star = xi[-1]
+                #theta_dot_xi_star = theta[1, -1]
+                # Low level function
+                
+
 
     else:
 
@@ -386,7 +414,7 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None):
 
                         # Calculation of C from K, q, and D
                         C = 5 * K * (D ** (5 / q)) / 8
-                        # Mass and Density ODE solution for a given 
+                        # Mass and Density ODE solution for a given
                         # rho_c and C, q, and D
                         r, m_rho = solve_m_rho(rho_c, C, q, D)
 
@@ -414,7 +442,6 @@ def mass_radius_relation_(R, K, n, xi_star, theta_dot_xi_star):
     """
         It calculates the mass based on the Lane-Emden equation
     """
-
     # Calculation of mass w.r.t. radius, and etc.
     c1 = (((K * (n + 1)) / (4 * np.pi * c.G)) ** (-0.5 * ((3 - n) / (1 - n))))
     c2 = (((1 / (4 * np.pi)) * (((4 * np.pi * c.G) / (K * (n + 1))) ** 1.5)
@@ -438,6 +465,10 @@ def mass_radius_relation__(r, m_rho):
 
     return M, R
 
+def _mass_radius_relation(R, A, n):
+
+    M  = A * (R ** ((3 - n) / (1 - n)))
+    return M 
 
 def solve_m_rho(rho_c, C, q, D):
     """
@@ -520,18 +551,6 @@ def solve_lane_emden(n):
         return r.t, r.y
     else:
         print("It seems solver is not able to obtain a solution!")
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##### DEPRECATED CODE #######
