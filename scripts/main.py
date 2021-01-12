@@ -91,7 +91,7 @@ rho_c_list = np.linspace(np.min(rho_c_A), np.max(rho_c_A), 20)
 K_0 = K2
 q_0 = np.round(q1)
 # ! TODO: Play with the initial guess of the D_0
-D_0 = 1e9
+D_0 = 2e9
 D1 = s.white_dwarf_fit(M=mass_kg[low_mass_ix], R=R_m[low_mass_ix],
                        K=K_0, q=q_0, rho_c_list=rho_c_list, D=D_0, type="D")
 

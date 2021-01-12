@@ -9,7 +9,7 @@
 \usepackage{appendix}
 \usepackage{verbatim}
 \usepackage{bigints}
-
+\usepackage[ruled,vlined]{algorithm2e}
 \usepackage{mathtools}
 \usepackage{gensymb}
 \usepackage{float}
@@ -281,36 +281,158 @@ Plugging \eqref{eq:rho_c} into \eqref{eq:radius}:
 which asserts that:
 
 \begin{equation*}
-    M \approx R^{\frac{3-n}{1-n}}
+    M \propto R^{\frac{3-n}{1-n}}
 \end{equation*}
 
 \paragraph{} Finally, the constant of proportionality can be written as:
 
-\begin{equation*}
+\begin{equation}
+    \label{eq:mass-radius-prop}
     M = C(K, n, \xi_*) R^{\frac{3-n}{1-n}} 
-\end{equation*}
+\end{equation}
 where 
 
-\begin{equation*}
+\begin{equation}
+    \label{eq:const-prop}
   \boxed{  C(K, n, \xi_*) = \frac{ \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}} }
-\end{equation*}
+\end{equation}
+
+\subsection{Special Case for White Dwarfs}
+
+\paragraph{} White dwarfs are the final stages of the low-mass stars where the pressure-density relation does not governed by the polytopic relation. In the case of white dwarfs, the main mechanism that governs the star is the quantum mechanical effect called \textit{electron degeneracy}. In the case of \textit{electron degeneracy}, the pressure-density relation can be written as:
+
+\begin{equation}
+    \label{eq:P-rho-low}
+    P = C \left[x \left(2x^2-3\right)\left(x^2+1\right)^{\frac{1}{2}}+3\sinh^{-1}{x}\right]
+\end{equation}
+
+where $x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}$
+
+\paragraph{} Finally, if the $x<<1$ , then the \eqref{eq:P-rho-low} can be reduced to via \textit{series expansion}:
+
+\begin{equation}
+    \label{eq:P-rho-low-reduced}
+    P = K_* \rho^{1 + \frac{1}{n_*}}
+\end{equation}
+
+where $K_* = \frac{8C}{5D^{\frac{5}{q}}}$ and $n_* = \frac{q}{5-q}$
 
 \subsection{Interpreting the Raw Data}
 \paragraph{} First of all, it should be acknowledged that the interpreting of the raw data is a very hard practice. In this section, the subject data will be briefly reviewed and the numerical approachs that is used to process the data will be explained.
 
 \subsubsection{White Dwarf Data}
 
-\paragraph{} The white dwarf data consists of the mass and radius information of the 378 stars. The mass and radius informations are given in the form of \textit{solar mass} and $\mathit{log(g)}$, respectively. 
+\paragraph{} The white dwarf data consists of the mass and radius information of the 378 stars. The mass and radius informations are given in the form of \textit{solar mass} and $\mathit{log(g)}$, respectively. To be able to work in SI units, some conversion must be done. The most trivial conversion is possibly the one that involves the solar mass. The solar mass can be converted to the \textit{kilogram} counterpart via using the following formulation:
+
 \begin{equation*}
-    \frac{d \rho}{dr} = \frac{\frac{dp}{dr}}{\frac{dp}{dx} \frac{dx}{d \rho}}
+    1 \; solar \; mass = 1.98847 \times 10^{30} \; kg
 \end{equation*}
+
+\paragraph{} Then, to be able to find the radius in \textit{meters}, one can make use of the \textit{Newton' Law of Gravitation}, which reads:
+
+\begin{equation*}
+    g = 10 ^ {L} S
+\end{equation*}
+
+where $L$ is the radius in $\mathit{log(g)}$, and $S = 0.01$ is the scaler factor that convert the $g$ value in CGS to SI. It is known that:
+
+\begin{equation*}
+    g = \frac{GM}{R^2}
+\end{equation*}
+
+Then, the radius $R$ in \textit{meters}, can be written as:
+
+\begin{equation*}
+    R = \sqrt{\frac{GM}{g}}
+\end{equation*}
+
+
+\subsection{How to find $K_*$ and $q$?}
+
+\paragraph{} The first thing that should be done is to make use of the \eqref{eq:mass-radius-prop} and \eqref{eq:P-rho-low-reduced}, since they include the variables that are inherent in \textit{White Dwarf} data and the simplification that makes the numerical processes easier. Note that the \eqref{eq:P-rho-low-reduced} is only valid for $x<<1$, which forces to limit the data that will be used in the numerical process. For the time being, accept that the data that will be used has the following property:
+
+\begin{equation*}
+    M \leqslant M_{threshold}
+\end{equation*}
+
+\paragraph{} The effect of the different variations of the $M_{threshold}$ is discussed in the Section \ref{sec:resdis}. To be able to find $K_*$ and $q$, one can construct a \textit{curve-fitting} pipeline, which takes into account \eqref{eq:mass-radius-prop} and \eqref{eq:P-rho-low-reduced}, since the \eqref{eq:P-rho-low-reduced} is the direct implication of the fact that \textit{Lane Emden} equation can be considered valid. In the beginning, it can be assumed that the mass and radius can be related via the following imaginary function:
+
+\begin{equation}
+    \label{eq:Kq_fit}
+    M = f(R, K_*, q)
+\end{equation}
+
+\paragraph{} The \eqref{eq:Kq_fit} can be expanded in two different ways, which ultimately determines the fitting pipeline.
+
+\subsubsection{Alternative 1}
+
+\paragraph{} The first alternative can be the fact that mass can be related to the radius in an exponential form with a scaling factor, that is being inspired by the \eqref{eq:mass-radius-prop}:
+
+\begin{equation*}
+    M = A R^{\frac{3-n}{1-n}}
+\end{equation*}
+
+\paragraph{} where the $n = \frac{q}{q-5}$. In this form, one can easily implement a \textit{non-linear curve-fitting} procedure to find constants $A$ and $q$. Once the $A$ is found, a little bit of algebraic manipulation is required to find the $K_*$. From \eqref{eq:const-prop}, it is known that:
+
+
+\begin{equation*}
+   A =\frac{ \left[\frac{K_* \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K_* \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}}
+\end{equation*}
+
+\paragraph{}Assume that:
+
+\begin{equation*}
+    B = \left[\frac{n+1}{4\pi G}\right]^{\frac{-2n}{2-2n}} \xi_*^{\frac{-n-1}{1-n}} 4 \pi \left( -\theta'(\xi_*) \right)
+\end{equation*}
+
+\paragraph{} Then, after some algebraic manipulations, one can obtain:
+
+\begin{equation*}
+    K_* = \left(\frac{A}{B}\right) ^ {\frac{n-1}{n}}
+\end{equation*}
+
+\paragraph{} Here, note that the solution of the IVP (\textit{Lane Emden equation}) is required to obtain $\xi_*$ and $\theta'(\xi_*)$, where $\xi_*$ refers to the $\xi$ value when $r = R$. All in all, this alternative is very cheap in terms of the required operations in one step, and it is very simple in terms of the mathematical equation that is imposed on the \textit{non-linear curve-fitting} subroutine.
+
+\subsubsection{Alternative 2}
+
+\paragraph{} The second alternative is to use the \eqref{eq:mass-radius-prop} directly, which reads:
+
+\begin{equation}
+    \label{eq:M-R-long}
+    M = \left[\frac{ \left[\frac{K_* \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K_* \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}} \right] R^{\frac{3-n}{1-n}}
+\end{equation}
+
+\paragraph{} To \eqref{eq:M-R-long}, one one can easily implement a \textit{non-linear curve-fitting} procedure to find constants $K_*$ and $q$. However, the negative side of this scheme is that it requires a solution of an IVP (\textit{Lane Emden equation}) in each step, which can be computationaly very demanding.
+
+% TODO: Talk about fixing q and fitting another curve
+
+% TODO: Talk about methodology for fitting D
+
+\section{Results and Discussion}
+
+% TODO: Talk about the difference between fixed q and unfixed q.
+
+\label{sec:resdis}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 \end{document}
-
 
 
               
