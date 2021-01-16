@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter
+
+# String to plt.function dictionary
 handle_dict = {"scatter":plt.scatter, "plot":plt.plot, "semilogx":plt.semilogx, "semilogy":plt.semilogy,"loglog":plt.loglog}
 # The list of markers to be used for each plot
 markers = ["o", "^", "h", "s", ".", "p"]
@@ -71,8 +73,19 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
     plt.tight_layout()
 
 
+def figure_(*p): plt.figure(*p)
+def show_(): plt.show()
 
 
+
+
+
+
+
+
+
+
+###################### DEPRECATED CODE ##################################################
 '''
 
 
@@ -211,6 +224,3 @@ def scatter_(x_list, y_list, labels=None, xlabel=None, ylabel=None, title=None, 
 
 # Regular figure initialization and termination
 
-
-def figure_(*p): plt.figure(*p)
-def show_(): plt.show()

@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit, minimize, minimize_scalar, root
 from scipy.interpolate import interp1d
 from scipy.integrate import solve_ivp
 from . import Constants as c
-
+from . import Utils as u
 
 def mass_equation(r, rho):
     """
@@ -63,39 +63,6 @@ def pressure_equation(r, m, rho):
         return 0.0
 
 
-def pressure_density_relation(rho, C, q, D):
-    """
-
-    pressure_density_relation:
-
-    pressure_density_relation(rho, C, q , D)
-
-    This function perform the following processes:
-        - It calculates the pressure value based on the density
-
-
-    Input:
-        rho = Density of the star
-        C, q ,D = Constants
-
-    Output:
-
-        P = C [ x * (2 * x^2 - 3) * ((x^2 + 1)^0.5) + 3 * sinh^-1(x)]
-
-        where
-
-        x = (rho / D) ^ (1 / q)
-
-    Example:
-        []
-
-
-
-    """
-
-    x = (rho/D) ** (1 / q)
-    return C * (x * (2 * x ** 2 - 2) * ((x ** 2 + 1) ** 0.5) + 3 * (np.arcsinh(x)))
-
 
 def density_equation(r, rho, m, C, q, D):
     """
@@ -150,6 +117,8 @@ def density_equation(r, rho, m, C, q, D):
     return drhodr
 
 
+
+
 def mass_density_equation(r, m_rho, C, q, D):
     """
 
@@ -183,6 +152,7 @@ def mass_density_equation(r, m_rho, C, q, D):
     return [np.nan_to_num(mass_equation(r, rho)), np.nan_to_num(density_equation(r, rho, m, C, q, D))]
 
 
+
 def lane_emden(xi, theta, n):
     """
     lane_emden:
@@ -211,6 +181,81 @@ def lane_emden(xi, theta, n):
         return [theta[1], 0]
 
 
+def tov_equation(r, mvp, K, n):
+    """
+    tov_equation:
+
+    lane_emden(r, mvp)
+
+    This function perform the following processes:
+        - It propagates the Tolman-Oppenheimer-Volkoff equation
+
+
+    Input:
+        r = Radius
+        mvp = Mass - Time dilation - Pressure in a combined vector
+
+    Output:
+
+        m' = 4 * pi * r^2 * rho
+        v' = 2 * ((m + 4 * pi * r^3 * p) / (r * (r - 2*m)))
+        p' = -((m + 4 * pi * r^3 * p) / (r * (r - 2*m))) * (p + rho)
+
+    Example:
+        []
+    """
+    m, v, p = mvp
+
+    # Write density in terms of pressure
+    rho = u.polytropic_conversion(K, n, p = p)
+    
+    m = 4 * np.pi * (r ** 2) * rho
+
+    # Check if denominator is zero or not
+    if r != 0:
+        v = 2 * ((m + 4 * np.pi * (r ** 3)) / (r * (r - 2 * m)))
+    else:
+        v = 0
+    
+    p = -0.5 * (p + rho) * v 
+
+    return np.array([m, v, p])
+    
+
+def pressure_density_relation(rho, C, q, D):
+    """
+
+    pressure_density_relation:
+
+    pressure_density_relation(rho, C, q , D)
+
+    This function perform the following processes:
+        - It calculates the pressure value based on the density cold white dwarfs
+
+
+    Input:
+        rho = Density of the star
+        C, q ,D = Constants
+
+    Output:
+
+        P = C [ x * (2 * x^2 - 3) * ((x^2 + 1)^0.5) + 3 * sinh^-1(x)]
+
+        where
+
+        x = (rho / D) ^ (1 / q)
+
+    Example:
+        []
+
+
+
+    """
+
+    x = (rho/D) ** (1 / q)
+    return C * (x * (2 * x ** 2 - 2) * ((x ** 2 + 1) ** 0.5) + 3 * (np.arcsinh(x)))
+
+
 def calculate_rho_c(M=None, R=None, K=None, n=None):
     """
     calculate_rho_c:
@@ -229,7 +274,7 @@ def calculate_rho_c(M=None, R=None, K=None, n=None):
 
     Output:
 
-        rho_c = Rho_c value which is calculated by the equation in the 
+        rho_c = Central density value which is calculated by the equation in the 
                 project report
 
     Example:
@@ -240,6 +285,8 @@ def calculate_rho_c(M=None, R=None, K=None, n=None):
     xi_star = xi[-1]
     theta_dot_xi_star = theta[1, -1]
 
+    # It determines base of the calculation
+    # M or R
     if R is None:
         return ((M / (4 * np.pi)) * (((4 * np.pi * c.G) / (K * (n + 1))) ** 1.5) * (1 / ((xi_star ** 2) * (-theta_dot_xi_star)))) ** ((2 * n) / (3 - n))
     else:
@@ -324,12 +371,15 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=N
         if A is not None:
 
             if type == "Aq":
+                # If A and q are to be optimized
                 y_0 = [A, q]
                 def mrr_(R, A, q): return mass_radius_relation(R = R, q = q, A = A)
 
             elif type == "A":
+                # If A is to be optimized for a given q
                 y_0 = [A]
                 def mrr_(R, A): return mass_radius_relation(R = R, q = q, A = A)
+
 
     # Solution of the curve-fitting problem
     popt, _ = curve_fit(f=mrr_, xdata=R, ydata=M, p0=y_0)
@@ -344,7 +394,7 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A =
     mass_radius_relation(R, K=None, C=None, q=None, D=None, rho_c = None, )
 
     This function perform the following processes:
-        - It calculates the mass or a radius of a star for a given constant values
+        - It calculates the massRadius or both of a star for a given constant values
         - It handles the problem in a generic way
 
 
@@ -455,8 +505,8 @@ def mass_radius_relation_(R, K, n, xi_star, theta_dot_xi_star):
 def mass_radius_relation__(r, m_rho):
     """
         It calculates the mass and radius
-        via integrating the mass and density ODE,
-        until rho(r) = 0
+        via using the integrated mass and density ODE,
+        until rho(R) = 0
     """
 
     # It cal
@@ -466,6 +516,12 @@ def mass_radius_relation__(r, m_rho):
     return M, R
 
 def _mass_radius_relation(R, A, n):
+    """
+        It calculates the mass based on the proportional
+        form of  Lane-Emden equation
+
+        M = A * R ^ ((3 - n) / (1 - n))
+    """
 
     M  = A * (R ** ((3 - n) / (1 - n)))
     return M 
@@ -498,10 +554,9 @@ def solve_m_rho(rho_c, C, q, D):
     is_surface.direction = 0
 
     # Initial value for mass and density:
-    # m(0) = 0
-    # rho(0) = rho_c ==> central density
     m_rho_0 = [0, rho_c]
-    r_span = [0, 1e11]
+    # Possible radius span
+    r_span = [0, 1e15]
 
     # Solution of the IVP
     r = solve_ivp(fun=mass_density_equation, t_span=r_span,
@@ -535,7 +590,7 @@ def solve_lane_emden(n):
         []
     """
 
-    # Condition for terminating the iteration when ==> theta(xi_n) = 0
+    # Condition for terminating the iteration when ==> theta(xi_star) = 0
     def is_surface(xi, theta, n): return theta[0]
     is_surface.terminal = True
     is_surface.direction = 0
@@ -551,6 +606,7 @@ def solve_lane_emden(n):
         return r.t, r.y
     else:
         print("It seems solver is not able to obtain a solution!")
+
 
 
 ##### DEPRECATED CODE #######

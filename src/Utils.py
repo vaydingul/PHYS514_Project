@@ -106,3 +106,14 @@ def Aq2K(A, q):
     K = (A / B) ** ((n - 1) / (n))
 
     return K
+
+
+def polytropic_conversion(K, n, p = None, rho = None):
+    """
+    docstring
+    """
+    
+    if p is None:
+        return K * ((rho) ** (1 + (1/n)))
+    else:
+        return (p / K) ** (n / (n+1))
