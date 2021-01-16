@@ -47,10 +47,14 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
     if len(x_list) != len(y_list):
         x_list = [x_list[0] for _ in range(len(y_list))]
 
+    if labels is None:
+        labels_ = ["" for _ in y_list]
+    else:
+        labels_ = labels
 
 
     for (x_, y_) in zip(x_list, y_list):
-        handle(x_, y_, label=labels[cnt], marker=markers[cnt], **kwargs)
+        handle(x_, y_, label=labels_[cnt], marker=markers[cnt], **kwargs)
         cnt += 1
 
 

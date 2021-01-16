@@ -86,16 +86,113 @@ def general_conversion(val_mass, val_logg):
 
     return mass_kg, R_m, R_aer
 
+def polytropic_conversion(K, n, p = None, rho = None):
+    """
+    polytopic_conversion:
+    polytropic_conversion(K, n, p = None, rho = None)
 
-# It convert given ´q value to ´n´ value :p
+    This function perform the following processes:
+        - It calculate pressure or density based on the asked
+            quantity
+        - If pressure is given, it calculates density based on
+            polytropic relation
+        - If density is given, it calculates pressure based on 
+            polytropic relation
+
+    Input:
+        K = Constants
+        n = Polytropic index
+        p = Pressure
+        rho = Density
+
+    Output:
+        Pressure or density
+
+    Example:
+
+        []
+    """
+    
+    if p is None:
+        return K * ((rho) ** (1 + (1/n)))
+    else:
+        return (np.abs(p) / K) ** (n / (n+1))
+
+
+def geometric_SI_conversion(time = None, mass = None, length = None, pressure = None, density = None, mode = 1):
+    """
+    geometric_SI_conversion:
+    geometric_SI_conversion(time = None, mass = None, length = None, pressure = None, density = None, mode = 1)
+
+    This function perform the following processes:
+        - It applies unit conversion on the given quantity
+        - It can vconvert from SI to geometric unit or
+            vice versa
+       
+    Input:
+        time = Time quantity
+        mass = Mass quantity
+        length = Length quantity
+        pressure = Pressure quantity
+        density = Density quantity
+        mode = Conversion direction
+            if mode == 1, it asserts the conversion from SI to geometric unit
+            if mode == -1, it asserts the conversion from geometric unit to SI
+
+    Output:
+        Converted quantity
+
+    Example:
+
+        []
+    """
+    if time is not None:
+        
+        factor = ((c.G * c.SOLAR_MASS) / (c.SPEED_OF_LIGHT ** 3))
+        return time / (factor ** mode)
+
+    if mass is not None:
+
+        factor = c.SOLAR_MASS
+        return mass / (factor ** mode)  
+
+    if length is not None:
+
+        factor = ((c.G * c.SOLAR_MASS) / (c.SPEED_OF_LIGHT ** 2))
+        return length / (factor ** mode)
+
+    if pressure is not None:
+
+        factor = (((c.G ** 3) * (c.SOLAR_MASS ** 2)) / (c.SPEED_OF_LIGHT ** 8))
+        return pressure * (factor ** mode)
+
+    if density is not None:
+
+        factor = (((c.G ** 3) * (c.SOLAR_MASS ** 2)) / (c.SPEED_OF_LIGHT ** 6))
+        return density * (factor ** mode)
+
+
+
+
+##### SOME HELPER FUNCTIONS ##########
+
+# It converts given ´q value to ´n´ counterpars
 def q2n(q): return q / (5-q)
 
+# It converts the given ´C´, ´q´, ´D´ values
+# to ´K´ counterpart
 def CqD2K(C, q, D): return (8 * C) / (5 * (D ** (5 / q)))
+
+# It converts the given ´K´, ´q´, ´D´ values
+# to ´C´ counterpart
 def KqD2C(K, q, D): return (5 / 8) * K * (D ** (5 / q))
 
 def Aq2K(A, q):
+    """
+    It converts given ´A´ and ´q´ values
+    to ´K´ counterpart.
+    """
     n = q2n(q)
-    
     xi, theta = s.solve_lane_emden(n)
     # The following are required for the mass calculation
     xi_star = xi[-1]
@@ -107,13 +204,3 @@ def Aq2K(A, q):
 
     return K
 
-
-def polytropic_conversion(K, n, p = None, rho = None):
-    """
-    docstring
-    """
-    
-    if p is None:
-        return K * ((rho) ** (1 + (1/n)))
-    else:
-        return (p / K) ** (n / (n+1))

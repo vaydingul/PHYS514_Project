@@ -149,7 +149,7 @@ def mass_density_equation(r, m_rho, C, q, D):
     m = m_rho[0]
     rho = m_rho[1]
     # nan_to_num function is used to surpass irregularities ( but, not quite sure :p)
-    return [np.nan_to_num(mass_equation(r, rho)), np.nan_to_num(density_equation(r, rho, m, C, q, D))]
+    return np.nan_to_num(np.array([mass_equation(r, rho), density_equation(r, rho, m, C, q, D)]))
 
 
 
@@ -181,11 +181,11 @@ def lane_emden(xi, theta, n):
         return [theta[1], 0]
 
 
-def tov_equation(r, mvp, K, n):
+def tov_equation(r, s, K, n):
     """
     tov_equation:
 
-    lane_emden(r, mvp)
+    tov_equation(r, mvp, K, n)
 
     This function perform the following processes:
         - It propagates the Tolman-Oppenheimer-Volkoff equation
@@ -193,33 +193,42 @@ def tov_equation(r, mvp, K, n):
 
     Input:
         r = Radius
-        mvp = Mass - Time dilation - Pressure in a combined vector
-
+        s = Mass - Time Dilation - Pressure - Rest Mass
+        K = Polytropic constant
+        n = Polytropic index
     Output:
 
         m' = 4 * pi * r^2 * rho
         v' = 2 * ((m + 4 * pi * r^3 * p) / (r * (r - 2*m)))
         p' = -((m + 4 * pi * r^3 * p) / (r * (r - 2*m))) * (p + rho)
-
+        m_p' = 4 * pi * (1 - ((2 * m)/(r)))^(-0.5)  * r^2 * rho
     Example:
         []
     """
-    m, v, p = mvp
+    m, v, p, m_p = s
+    #print(r,m,v,p, K, n)
 
     # Write density in terms of pressure
     rho = u.polytropic_conversion(K, n, p = p)
     
-    m = 4 * np.pi * (r ** 2) * rho
+    m_next = 4 * np.pi * (r ** 2) * rho
 
+    n_ = (m + 4 * np.pi * (r ** 3) * p)
+    d_ = (r * (r - 2 * m))
     # Check if denominator is zero or not
-    if r != 0:
-        v = 2 * ((m + 4 * np.pi * (r ** 3)) / (r * (r - 2 * m)))
+    if d_ != 0:
+        v_next = 2 * (n_ / d_)
     else:
-        v = 0
+        v_next = 0
     
-    p = -0.5 * (p + rho) * v 
+    p_next = -0.5 * (p + rho) * v_next 
 
-    return np.array([m, v, p])
+    if r != 0:
+        m_p_next = 4 * np.pi * ((1 - ((2 * m) / (r))) ** (-0.5)) * (r ** 2) * rho 
+    else:
+        m_p_next = 0.0
+
+    return (np.array([m_next, v_next, p_next, m_p_next]))
     
 
 def pressure_density_relation(rho, C, q, D):
@@ -566,6 +575,51 @@ def solve_m_rho(rho_c, C, q, D):
         return r.t, r.y
     else:
         print("It seems solver is not able to obtain a solution!")
+
+
+
+def solve_tov(p_c, K, n):
+    """
+    solve_tov:
+
+    solve_tov(p_c, K, n)
+
+    This function perform the following processes:
+        - It solves the TOV equation
+
+
+    Input:
+        p_c = Initial central pressure value
+        K, n = Constants arguments
+
+    Output:
+
+        r = Propagated radius span
+        s = Solution vector in which includes:
+            Mass - Time Dilation - Pressure - Rest Mass
+
+    Example:
+        []
+    """
+    # Termination criteria for the surface
+    def is_surface(r, s, K, n): return s[-2] - 1e-50
+    is_surface.terminal = True
+    is_surface.direction = 0
+
+    # Initial value for Mass - Time Dilation - Pressure - Rest Mass:
+    s_0 = [0, 0, p_c, 0]
+    # Possible radius span
+    r_span = [0, 1e15]
+
+    # Solution of the IVP
+    r = solve_ivp(fun=tov_equation, t_span=r_span,
+                  y0=s_0, events=is_surface, args=(K, n), max_step = 1)
+
+    if r.status >= 0:
+        return r.t, r.y
+    else:
+        print("It seems solver is not able to obtain a solution!")
+
 
 
 def solve_lane_emden(n):
