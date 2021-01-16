@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+from matplotlib.ticker import NullFormatter
 handle_dict = {"scatter":plt.scatter, "plot":plt.plot, "semilogx":plt.semilogx, "semilogy":plt.semilogy,"loglog":plt.loglog}
 # The list of markers to be used for each plot
 markers = ["o", "^", "h", "s", ".", "p"]
@@ -51,6 +51,7 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
         handle(x_, y_, label=labels[cnt], marker=markers[cnt], **kwargs)
         cnt += 1
 
+
     if xlabel is not None:
         plt.xlabel(xlabel)
     if ylabel is not None:
@@ -59,7 +60,14 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
         plt.title(title)
     if labels is not None:
         plt.legend()
+    
+    plt.gca().xaxis.set_minor_formatter(NullFormatter())
 
+    if savefn is not None:
+        plt.savefig(savefn, bbox_inches="tight")
+
+
+    plt.margins(0.0)
     plt.tight_layout()
 
 

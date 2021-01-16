@@ -91,6 +91,7 @@ def general_conversion(val_mass, val_logg):
 def q2n(q): return q / (5-q)
 
 def CqD2K(C, q, D): return (8 * C) / (5 * (D ** (5 / q)))
+def KqD2C(K, q, D): return (5 / 8) * K * (D ** (5 / q))
 
 def Aq2K(A, q):
     n = q2n(q)

@@ -133,8 +133,8 @@ def density_equation(r, rho, m, C, q, D):
     s2 = ((x) * (4 * x) * ((x ** 2 + 1) ** 0.5))
     s3 = ((x) * (2 * x ** 2 - 3) * (0.5) * (2 * x) * ((x ** 2 + 1) ** -0.5))
     s4 = ((3) / (np.sqrt(x ** 2 + 1)))
-    #dpdx = C * (s1 + s2 + s3 + s4)
-    dpdx = 8 * C * (x ** 4)
+    dpdx = C * (s1 + s2 + s3 + s4)
+    #dpdx = 8 * C * (x ** 4)
     # Trivial differentiation
     dxdrho = (D ** (-1/q)) * (rho ** ((1/q) - 1)) / (q)
 

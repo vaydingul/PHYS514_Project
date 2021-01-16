@@ -288,13 +288,13 @@ which asserts that:
 
 \begin{equation}
     \label{eq:mass-radius-prop}
-    M = C(K, n, \xi_*) R^{\frac{3-n}{1-n}} 
+    M = C(K, n, \xi_*, \theta') R^{\frac{3-n}{1-n}} 
 \end{equation}
 where 
 
 \begin{equation}
     \label{eq:const-prop}
-  \boxed{  C(K, n, \xi_*) = \frac{ \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}} }
+  \boxed{  C(K, n, \xi_*, \theta') = \frac{ \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}} }
 \end{equation}
 
 \subsection{Special Case for White Dwarfs}
@@ -310,6 +310,11 @@ where $x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}$
 
 \paragraph{} Finally, if the $x<<1$ , then the \eqref{eq:P-rho-low} can be reduced to via \textit{series expansion}:
 
+\begin{equation*}
+    P = \frac{8}{5} \left(\frac{\rho}{D}\right)^{\frac{5}{q}}
+\end{equation*}
+
+\paragraph{} This form can be easily transformed into the \textit{polytropic} assemble, as demonstrated in the following expression:
 \begin{equation}
     \label{eq:P-rho-low-reduced}
     P = K_* \rho^{1 + \frac{1}{n_*}}
@@ -325,7 +330,7 @@ where $K_* = \frac{8C}{5D^{\frac{5}{q}}}$ and $n_* = \frac{q}{5-q}$
 \paragraph{} The white dwarf data consists of the mass and radius information of the 378 stars. The mass and radius informations are given in the form of \textit{solar mass} and $\mathit{log(g)}$, respectively. To be able to work in SI units, some conversion must be done. The most trivial conversion is possibly the one that involves the solar mass. The solar mass can be converted to the \textit{kilogram} counterpart via using the following formulation:
 
 \begin{equation*}
-    1 \; solar \; mass = 1.98847 \times 10^{30} \; kg
+    1 M_\odot = 1.98847 \times 10^{30} \; kg
 \end{equation*}
 
 \paragraph{} Then, to be able to find the radius in \textit{meters}, one can make use of the \textit{Newton' Law of Gravitation}, which reads:
@@ -348,7 +353,7 @@ Then, the radius $R$ in \textit{meters}, can be written as:
 
 
 \subsection{How to find $K_*$ and $q$?}
-
+\label{sec:Kq_fit}
 \paragraph{} The first thing that should be done is to make use of the \eqref{eq:mass-radius-prop} and \eqref{eq:P-rho-low-reduced}, since they include the variables that are inherent in \textit{White Dwarf} data and the simplification that makes the numerical processes easier. Note that the \eqref{eq:P-rho-low-reduced} is only valid for $x<<1$, which forces to limit the data that will be used in the numerical process. For the time being, accept that the data that will be used has the following property:
 
 \begin{equation*}
@@ -365,6 +370,7 @@ Then, the radius $R$ in \textit{meters}, can be written as:
 \paragraph{} The \eqref{eq:Kq_fit} can be expanded in two different ways, which ultimately determines the fitting pipeline.
 
 \subsubsection{Alternative 1}
+\label{sec:Kq_fit_a1}
 
 \paragraph{} The first alternative can be the fact that mass can be related to the radius in an exponential form with a scaling factor, that is being inspired by the \eqref{eq:mass-radius-prop}:
 
@@ -394,6 +400,7 @@ Then, the radius $R$ in \textit{meters}, can be written as:
 \paragraph{} Here, note that the solution of the IVP (\textit{Lane Emden equation}) is required to obtain $\xi_*$ and $\theta'(\xi_*)$, where $\xi_*$ refers to the $\xi$ value when $r = R$. All in all, this alternative is very cheap in terms of the required operations in one step, and it is very simple in terms of the mathematical equation that is imposed on the \textit{non-linear curve-fitting} subroutine.
 
 \subsubsection{Alternative 2}
+\label{sec:Kq_fit_a2}
 
 \paragraph{} The second alternative is to use the \eqref{eq:mass-radius-prop} directly, which reads:
 
@@ -404,27 +411,238 @@ Then, the radius $R$ in \textit{meters}, can be written as:
 
 \paragraph{} To \eqref{eq:M-R-long}, one one can easily implement a \textit{non-linear curve-fitting} procedure to find constants $K_*$ and $q$. However, the negative side of this scheme is that it requires a solution of an IVP (\textit{Lane Emden equation}) in each step, which can be computationaly very demanding.
 
-% TODO: Talk about fixing q and fitting another curve
+\subsubsection{Further Improvement}
+\label{sec:Kq_fit_f}
 
-% TODO: Talk about methodology for fitting D
+\paragraph{} Theoretically, it is known that $q$ should be an integer. However, during \textit{non-linear curve-fitting process}, it is very hard to impose that constraint. Therefore, one further improvement might be, firstly, the calculation of the $K_*$ and $q$, and then, the second calculation for the only $K_*$ by fixing $q$ to the nearest integer.  
+
+
+\subsection{How to Find $C$ and $D$?}
+\label{sec:D_fit}
+\paragraph{} From \eqref{eq:P-rho-low-reduced}, it is known that:
+
+\begin{equation*}
+    C = \frac{5}{8}K_* D^{\frac{5}{q}}
+\end{equation*}
+
+\paragraph{} It means that if one is able to make accurate estimation of the $D$, the $C$ can be immediately found, since the $K_*$ is known beforehand. However, at this point, it is very important to approximate D in a most efficient way. 
+
+\subsubsection{Alternative 1}
+\label{sec:D_fit_a1}
+\paragraph{} To estimate the $D$, the following methodology will be traced. Firstly, one should solve the \eqref{eq:dmdr}, and \eqref{eq:dpdr} in conjunction to be able to obtain the mass and radius information for a given $\rho_c$ value. The reason for the usage of the \eqref{eq:dmdr}, and \eqref{eq:dpdr} as opposed to the \textit{Lane Emden equation} is the fact that \textit{Lane Emden equation} is not valid anymore for white dwarfs. However, as can be seen in \eqref{eq:dpdr}, the pressure equation should be converted to the density equation via using the \eqref{eq:P-rho-low}, such that:
+
+\begin{equation*}
+    \frac{dp}{dr} = \frac{dp}{dx} \frac{dx}{d \rho} \frac{d \rho}{dr} 
+\end{equation*}
+
+\begin{equation*}
+    \frac{d \rho}{dr}  = \frac{ \frac{dp}{dr}}{ \frac{dp}{dx} \frac{dx}{d \rho} }
+\end{equation*}
+
+where 
+
+\begin{equation*}
+    x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}
+\end{equation*}
+
+\begin{equation*}
+    \frac{dp}{dx} =  \left(\left(2  x ^ 2 - 3\right)  (x ^ 2 + 1) ^ {\frac{1}{2}}\right) + \left(4x^2  \left(x ^ 2 + 1\right) ^ {\frac{1}{2}}\right) + \left(x^2 (2  x ^ 2 - 3) \left(x ^ 2 + 1\right) ^ {\frac{1}{2}}\right) + \frac{3}{\sqrt{x ^ 2 + 1}}
+\end{equation*}
+
+\begin{equation*}
+    \frac{dx}{d \rho} = D^{\frac{-1}{q}} \frac{\rho^{\frac{1}{q} - 1}}{q}
+\end{equation*}
+
+\paragraph{} Having that mass and appropriate density equation, one can integrate them via using the following initial conditions:
+
+ \begin{equation*}
+     m(0) = 0
+ \end{equation*}
+
+ \begin{equation*}
+     \rho(0) = \rho_c
+ \end{equation*}
+
+ until the $\rho(R) = 0$. Hence, at that particular point, the mass reads $m(R) = M$
+
+ \paragraph{} Secondly, the enough number of $\rho_c$ point should be sampled to construct a representative $M-R$ solution. Once the representative $M-R$ solution is obtained, one can implement a \textit{spline interpolation} on that data and try to approximate to the original $M-R$ data. Finally, with iterating the initial guess of $D$ and trying to minimize the error between representative $M-R$ spline and original $M-R$ data, the final solution for $D$ can be obtained.
+
+ \subsubsection{Alternative 2}
+ \label{sec:D_fit_a2}
+
+ \paragraph{} The other alternative might be the usage of the \eqref{eq:P-rho-low-reduced} rather than the usage of the \eqref{eq:P-rho-low}. In this case, the only altering relation is the following:
+
+ \begin{equation*}
+    \frac{dp}{dx} = 8Cx^4
+ \end{equation*}
+
+ The rest can be implemented in the same way, as is done in Section \ref{sec:D_fit_a1}.
 
 \section{Results and Discussion}
-
+\subsection{Experimental Results Based on the Newtonian Approach}
 % TODO: Talk about the difference between fixed q and unfixed q.
 
 \label{sec:resdis}
 
+\paragraph{} From Figure \ref{fig:12} to Figure \ref{fig:11_12}, all figures include side-by-side graphics which represents the whole dataset and the portion of the dataset which satisfies the below relation:
+
+\begin{equation*}
+    M \leq M_{threshold}
+\end{equation*}
+
+where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
+
+\paragraph{} Moreover, from Figure \ref{fig:12} to Figure \ref{fig:11_12}, the following methods, there are different annotations for the usage of the different methods. To begin with, \textit{Curve Fit for K and q} represents the initial curve-fitting procedure that estimates the $K$ and $q$ concurrently, which is also reflected in numerous alternatives in Section \ref{sec:Kq_fit}. Secondly, \textit{Curve Fit for only K} represents the further improvement that is mentioned in Section \ref{sec:Kq_fit}. Finally, \textit{Curve Fit for Only D} represents the processes took place after the finding of the $K$ and $q$, which is also discussed in Section \ref{sec:D_fit}.
+
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/1_n_ll_rho_m.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/2_n_ll_rho_m_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{Central Density Distribution as a \textit{Loglog} plot}
+\label{fig:12}
+\end{figure}
+
+\paragraph{} In Figure \ref{fig:12} and Figure \ref{fig:34}, the central density distribution that is estimated based on the methods discussed in Section \ref{sec:Kq_fit_a1} and Section \ref{sec:Kq_fit_f} can be visualized. Having observed them, the first comment should be the fact that the further improvement actually does not result in a distinct advancement on the results. However, it should be noted that the main reason behind this fact is the effect of the selected low mass region, which will be discussed in Table \ref{tab:Kq}.
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/3_n_s_rho_m.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/4_n_s_rho_m_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{Central Density Distribution as a \textit{Scatter} plot}
+\label{fig:34}
+\end{figure}
 
 
 
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/7_n_ll_ms_r.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/8_n_ll_ms_r_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{Mass Distribution as a \textit{Loglog} plot}
+\label{fig:78}
+\end{figure}
+
+
+\paragraph{} In Figure \ref{fig:78} and Figure \ref{fig:11_12}, the mass distribution as a function of radius can be observed. In addition to the usage of the methods discussed in Section \ref{sec:Kq_fit_a1} and Section \ref{sec:Kq_fit_f}, to estimate $D$, the method discussed in Section \ref{sec:D_fit_a1} is used. Having observed Figure \ref{fig:78} and Figure \ref{fig:11_12}, one can immediately deduce that the fitting processes applied to find $K$ and $q$ is very succesful to approximate actual data. However, when the broader perpective is considered, it can be observed that the further fitting process on the $D$ provides a better overall accuracy on the actual data. One reason for this fact might be the lack of information during the processes that considers only the $K$ and $q$. Also, from Figure \ref{fig:78}, it can be easily detected that there is a certain boundary that limits the mass, which is actually called \textit{Chandrasekhar limit}.
+
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/11_n_s_ms_r.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/12_n_s_ms_r_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{Mass Distribution as a \textit{Scatter} plot}
+\label{fig:11_12}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{} & \multicolumn{2}{c|}{\textbf{When K and q are concurrently fitted}} & \multicolumn{2}{c|}{\textbf{When K is fitted while q is fixed}} \\ \hline
+\textbf{}                      & \textbf{K} & \textbf{q} & \textbf{K} & \textbf{q} \\ \hline
+{$\mathbf{M \leq 0.34 M_\odot}$} & 2677748.44 & 3.0011     & 2850931.98 & 3.0        \\ \hline
+{$\mathbf{M \leq 0.50 M_\odot}$} & 131902.29  & 3.0634     & 2725562.65 & 3.0        \\ \hline
+\end{tabular}%
+}
+\caption{Estimation of the $K$ and $q$ under different \textit{low mass} region selections}
+\label{tab:Kq}
+\end{table}
+
+\paragraph{} One further inspection on the results might be made on the effect of the selection of the \textit{low mass} region. Observing Table \ref{tab:Kq}, one can easily deduce that the selection of the \textit{low mass} region has a great impact on the $K$ and $q$ estimation when they are estimated concurrently. However, it should be also observed that the effect of the \textit{low mass} region selection on $K$ when q is fixed is relatively minimal when it is compared to the previous case. Rougly speaking, one reason for that might be the fact that when the $q$ is not properly constrained, it is not possible to impose the physical interpretation of the \textit{low mass} white dwarf condition on the fitting procedure. In that case, the more proper incorporation of the \textit{low mass} white dwarf condition is being provided by sampling of the mass and radius data. That is, if the all data accurately represents the cluster of \textit{low mass} white dwarfs, it is not required to match all constants to their theoretical counterparts. However, if the constraint on the $q$ is properly imposed on the procedure (i.e. fixing to nearest \textit{integer}), there is not any need to keep the sample so tight. All in all, that is why the estimated $K$ values in the fixed $q$ case are similar while the estimated $K$ values in the unfixed $q$ case are tended to differ.
+
+\paragraph{} Also, the results of the all estimations can be observed in Table \ref{tab:all_param}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+     & \multicolumn{2}{c|}{\textbf{When K and q are concurrently fitted}} & \multicolumn{2}{c|}{\textbf{When K is fitted while q is fixed}} & \textbf{} & \textbf{} \\ \hline
+                                   & \textbf{K}       & \textbf{q}     & \textbf{K}      & \textbf{q}    & \textbf{D}          & \textbf{C}             \\ \hline
+    $\mathbf{M \leq 0.34 M_\odot}$ & $2677748.44$     & $3.0011$       & $2850931.98$    & $3.0$         & $2.003 \times 10^9$ & $5.674 \times 10^{21}$ \\ \hline
+                                   & \multicolumn{2}{c|}{\textbf{K}}   & \multicolumn{2}{c|}{\textbf{q}} & \textbf{D}          & \textbf{C}             \\ \hline
+    \textbf{Theoretical}           & \multicolumn{2}{c|}{$3161128.62$} & \multicolumn{2}{c|}{$3.0$}      & $1.947 \times 10^9$ & $6.002 \times 10^{21}$ \\ \hline
+    \end{tabular}%
+    }
+    \caption{Overall Estimated Parameter Set}
+    \label{tab:all_param}
+    \end{table}
+
+\paragraph{} Finally, the \textit{Chandrasekhar limit} can be observed more clearly in Figure \ref{fig:chandrasekhar}, which corresponds to approximately $M_{ch} \approx 1.5 M_\odot$
+
+\begin{figure}[H] 
+   \centering \includegraphics[width=0.7\columnwidth]{figures/7_n_ll_ms_r_chandrasekhar.png}           
+                \caption{Visualization of the Chandrasekhar Limit}                
+                   \label{fig:chandrasekhar}
+   \end{figure}
 
 
 
+\begin{comment}
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/5_n_ll_m_r.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/6_n_ll_m_r_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{asd}
+\label{fig:56}
+\end{figure}
 
 
-
-
-
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/9_n_s_m_r.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/10_n_s_m_r_.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{asd}
+\label{fig:9_10}
+\end{figure}
+\end{comment}
 
 
 
