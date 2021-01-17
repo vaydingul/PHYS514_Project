@@ -93,9 +93,17 @@ Date: \@date
 %                   \label{fig:label}
 %   \end{figure}
 
-\section{Newtonian Approach}
 
-\subsection{Derivation of \textit{Lane-Emden Equation}}
+\begin{abstract}
+    Abstract.
+\end{abstract}
+\section{Introduction}
+
+
+\section{Mathematical Background}
+\subsection{Newtonian Approach}
+
+\subsubsection{Derivation of \textit{Lane-Emden Equation}}
 
 \paragraph{} In this project, the first task is to derive the \textit{Lane-Emden} equation to be able to have a general expression for the \textit{hydrostatic equilibrium}. In the beginning, it is known that:
 
@@ -200,7 +208,7 @@ Therefore,
     \theta(\xi) =  \frac{\sin (\xi )}{\xi }
 \end{equation*}
 
-\subsection{Calculation of Total Mass}
+\subsubsection{Calculation of Total Mass}
 
 \paragraph{} To be able to calculate the mass of the star for a given radius, one can easily make use of the \eqref{eq:dmdr}, that is, integration of the \eqref{eq:dmdr} for a certain radius interval yields the mass of the subject star. That being said, the following relation can be observed:
 
@@ -234,7 +242,7 @@ where ${\xi_*} = \frac{R}{\alpha}$
 \end{equation}
 
 
-\subsection{Relation Between Mass and Radius}
+\subsubsection{Relation Between Mass and Radius}
 
 \paragraph{} For a group of stars sharing same polytopic EOS, one can write a common relation between mass and radius. The first thing that should be implemented is previous version of the \eqref{eq:mass}:
 \begin{equation*}
@@ -297,7 +305,7 @@ where
   \boxed{  C(K, n, \xi_*, \theta') = \frac{ \left[\frac{K \left(n+1\right)}{4 \pi G}\right]^{\frac{n-3}{2 - 2n}} }{\frac{1}{4 \pi} \left[\frac{4 \pi G}{K \left(n+1\right)}\right]^{\frac{3}{2}}  \frac{1}{\xi_*^2\left(-\theta'(\xi_*)\right)}} \xi_*^{\frac{n-3}{1-n}} }
 \end{equation}
 
-\subsection{Special Case for White Dwarfs}
+\subsubsection{Special Case for White Dwarfs}
 
 \paragraph{} White dwarfs are the final stages of the low-mass stars where the pressure-density relation does not governed by the polytopic relation. In the case of white dwarfs, the main mechanism that governs the star is the quantum mechanical effect called \textit{electron degeneracy}. In the case of \textit{electron degeneracy}, the pressure-density relation can be written as:
 
@@ -322,6 +330,85 @@ where $x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}$
 
 where $K_* = \frac{8C}{5D^{\frac{5}{q}}}$ and $n_* = \frac{q}{5-q}$
 
+\subsection{Relativistic Approach}
+
+\paragraph{} When the mass of a white dwarf exceeds the special limit called \textit{Chandrasekar limit}, it is tended to explode. However, even after the explosion, some of them might have a core that is heavier than the \textit{Chandrasekar limit}. In this case, if the mass is not too large, a special type of star called \textit{Neutron star (NS)} is formed. For a NS, the \textit{Newtonian} approach does not further hold, hence, the relativistic approach should be considered.
+
+\subsubsection{Tolman-Oppenheimer-Volkoff (TOV) Equation}
+\label{sec:tov}
+\paragraph{} When the general relativistic effects are considered, the \eqref{eq:dmdr} and \eqref{eq:dpdr} is being transformed into the following structure:
+
+\begin{equation}
+\begin{aligned}
+    \label{eq:tov}
+    m' &= 4 \pi r^2 \rho \\
+    \nu' &= 2 \frac{m + 4 \pi r^3 p}{r \left(r - 2m\right)} \\
+    p' &= -\frac{m + 4 \pi r^3 p}{r \left(r - 2m\right)} \left(\rho + p\right) = -\frac{1}{2}\left(\rho + p\right)\nu'
+\end{aligned}
+\end{equation}
+
+where $m$, $\rho$ and $p$ represent the mass, density and pressure, respectively, and, $\nu$ represents \textit{time dilation}. As usual, to be able to solve \eqref{eq:tov}, one should obtain a relation between density and pressure. Although, there is not any well-defined equation of state for relativistic case, the polytropic EOS with polytropic index of $1$ is a proper approximation. That is:
+
+\begin{equation*}
+    p = K_{NS} \rho ^ 2
+\end{equation*}
+
+\paragraph{} Finally, \eqref{eq:tov} can be solved via integrating from the following initial conditions:
+
+\begin{equation*}
+    \begin{aligned}
+        m(0) &= 0\\
+        \nu(0) &= 0\\
+        p(0) &= p_c
+    \end{aligned}
+\end{equation*}
+
+where $p_c$ denotes the central pressure.
+
+\subsubsection{Fractional Binding Energy}
+
+\paragraph{} Due to the relativistic effects, the calculated mass via using the \eqref{eq:tov} does not represent the sum of the rest mass, since there is also negative contribution from the binding energy. However, the rest mass can be found via adding the following ODE to the set of \eqref{eq:tov}:
+
+\begin{equation*}
+    m_p' = 4 \pi \left(1 - \frac{2m}{r}\right)^{-\frac{1}{2}}r^2\rho
+\end{equation*}
+
+where $m_p$ represents the baryonic mass. Finally, the \textit{fractional binding energy} can be calculated via using the following formulation:
+
+\begin{equation*}
+    \Delta = \frac{M_p - M}{M}
+\end{equation*}
+
+\subsubsection{Outside the Star}
+\paragraph{} It can be easily acknowledged that there is not any mass and pressure outside the star, which means $m(r>R) = M$ and $p(r>R) = 0$. Therefore, the only equation to be solved is the reduced form of the time dilation, that is for $r>R$:
+
+\begin{equation*}
+    \nu' = \frac{2M}{r\left(r - 2M\right)}
+\end{equation*}
+
+\paragraph{} Using \textit{Wolfram Mathematica}, it can be shown that:
+
+\begin{equation}
+    \label{eq:v1}
+    \nu(r) = -\ln(r) + \ln(r -2M) + C
+\end{equation}
+
+\paragraph{} Also, it is known that the addition of a constant does not change the solution. Therefore, firstly, the $\nu(R)$ should be calculated, which reads:
+
+\begin{equation}
+    \label{eq:v2}
+    \nu(R) = -\ln(R) + \ln(R -2M) + C
+\end{equation}
+
+\paragraph{}Finally, the substraction of \eqref{eq:v2} from \eqref{eq:v1} and the rearrangement of the terms yields:
+
+\begin{equation*}
+    \nu(r>R) = \ln(1-\frac{2M}{r}) - \ln(1-\frac{2M}{R})+\nu(R) 
+\end{equation*}
+
+
+
+\section{Experiments}
 \subsection{Interpreting the Raw Data}
 \paragraph{} First of all, it should be acknowledged that the interpreting of the raw data is a very hard practice. In this section, the subject data will be briefly reviewed and the numerical approachs that is used to process the data will be explained.
 
@@ -351,8 +438,10 @@ Then, the radius $R$ in \textit{meters}, can be written as:
     R = \sqrt{\frac{GM}{g}}
 \end{equation*}
 
+\subsection{Calculation of Mass and Radius in Newtonian Approach}
+\paragraph{} Tha mass and radius can simply be calculated via the integration of the \eqref{eq:final}  from center to the outer surface, that is until $\theta(\xi_*) = 0$. Based on the condition, also, the \eqref{eq:dmdr} and \eqref{eq:dpdr} can be used to calculate mass and radius relation.
 
-\subsection{How to find $K_*$ and $q$?}
+\subsection{Estimation of $K_*$ and $q$ in Newtonian Approach}
 \label{sec:Kq_fit}
 \paragraph{} The first thing that should be done is to make use of the \eqref{eq:mass-radius-prop} and \eqref{eq:P-rho-low-reduced}, since they include the variables that are inherent in \textit{White Dwarf} data and the simplification that makes the numerical processes easier. Note that the \eqref{eq:P-rho-low-reduced} is only valid for $x<<1$, which forces to limit the data that will be used in the numerical process. For the time being, accept that the data that will be used has the following property:
 
@@ -417,7 +506,7 @@ Then, the radius $R$ in \textit{meters}, can be written as:
 \paragraph{} Theoretically, it is known that $q$ should be an integer. However, during \textit{non-linear curve-fitting process}, it is very hard to impose that constraint. Therefore, one further improvement might be, firstly, the calculation of the $K_*$ and $q$, and then, the second calculation for the only $K_*$ by fixing $q$ to the nearest integer.  
 
 
-\subsection{How to Find $C$ and $D$?}
+\subsection{Estimation of $C$ and $D$ in Newtonian Approach}
 \label{sec:D_fit}
 \paragraph{} From \eqref{eq:P-rho-low-reduced}, it is known that:
 
@@ -478,6 +567,9 @@ where
 
  The rest can be implemented in the same way, as is done in Section \ref{sec:D_fit_a1}.
 
+
+\subsection{Calculation of Mass and Radius in Relativistic Approach}
+\paragraph{} Tha mass and radius can simply be calculated via the integration of the \eqref{eq:tov} from center to the outer surface, that is until $p(R) = 0$. Moreover, all other calculations can be implemented on the calculated mass and radius values.
 \section{Results and Discussion}
 \subsection{Experimental Results Based on the Newtonian Approach}
 % TODO: Talk about the difference between fixed q and unfixed q.
@@ -506,7 +598,7 @@ where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
 %\caption{}
 %\label{fig:2_n_ll_rho_m_}
 \end{minipage}
-\caption{Central Density Distribution as a \textit{Loglog} plot}
+\caption{Central Density Distribution as a \textit{Log-log} plot}
 \label{fig:12}
 \end{figure}
 
@@ -540,7 +632,7 @@ where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
 %\caption{}
 %\label{fig:2_n_ll_rho_m_}
 \end{minipage}
-\caption{Mass Distribution as a \textit{Loglog} plot}
+\caption{Mass Distribution as a \textit{Log-log} plot}
 \label{fig:78}
 \end{figure}
 
@@ -645,10 +737,63 @@ where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
 \end{comment}
 
 
+\subsection{Experimental Results Based on the Relativistic Approach}
 
+\paragraph{} All experiments are conducted based on the preassumed distribution of the central pressure. The range of the assumed central pressure distribution can be observed below:
 
+\begin{equation*}
+    p_c = \left\{10^{20}, \dots, 10^{45}\right\} \frac{kg}{m^3} 
+\end{equation*}
 
+\paragraph{} In Figure \ref{fig:17_18}, the mass and radius distribution wihch is obtained by the integration of the \eqref{eq:tov} can be observed.
+\paragraph{} In Figure \ref{fig:17_18}, the relation between fractional binding energy and radius can be observed. Inspecting the Figure \ref{fig:17_18}, one can infer that as the radius increases, the difference between rest mass and  relative mass decreases. However, in low values of radius, rest mass is relatively higher than the relative mass.
 
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/17_e_s_m_r.png}}
+%\caption{}
+%\label{fig:1_n_ll_rho_m}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\centerline{\includegraphics[width=\linewidth]{figures/18_e_s_delta_r.png}}
+%\caption{}
+%\label{fig:2_n_ll_rho_m_}
+\end{minipage}
+\caption{The Relation of Radius with Mass and Fractional Binding Energy}
+\label{fig:17_18}
+\end{figure}
+
+\paragraph{} In Figure \ref{fig:19}, the \textit{log-log} plot that visualizes the relation between mass and central density can be observed. The stability of the point are determined via using the below relation:
+
+\begin{align*}
+    \frac{dM}{d_{\rho_c}} > 0 &\Rightarrow Stable \\
+    \frac{dM}{d_{\rho_c}} < 0 &\Rightarrow Unstable \\
+\end{align*}
+
+\paragraph{} Moreover, in Figure \ref{fig:19}, there is a peak point which actually represents the mass limit that a NS can be enlarged, which also corresponds to the point where the transition from stable region to unstable region starts. This maximal points corresponds to the below numerical value:
+
+\begin{equation*}
+    M_{max} \approx 2.0 M_\odot
+\end{equation*}
+
+\begin{figure}[H] 
+\centering \includegraphics[width=0.7\columnwidth]{figures/19_e_ll_m_rho.png}           
+\caption{Mass and Central Density Relation}                
+\label{fig:19}
+\end{figure}
+
+\paragraph{} As discussed in Section \ref{sec:tov}, the equation of state of the relativistic case is not well-defined. Initially, it is assumed as the polytropic relation with index of $1$. Moreover, as can be observed in Figure \ref{fig:17_18} and Figure \ref{fig:19}, the polytropic constant is chosen as $K_{NS} = 100$. In Figure \ref{fig:20}, the effect of the alteration of the polytropic constant ($K_{NS}$) on the maximum mass that can a neutran star have can be investigated.
+
+\paragraph{} Thanks to the observations done so far, it is known that the heaviest neutron star has the mass of $M = 2.14 M_\odot$, which corresponds to the point that crossed with red lines in Figure \ref{fig:20}. According to the red crosses, it can be concluded that the maximum allowable polytropic constant ($K_{NS}$) reads:
+
+\begin{equation*}
+    K_{NS_{max_{allowable}}} \approx 112.5
+\end{equation*}
+\begin{figure}[H] 
+\centering \includegraphics[width=0.7\columnwidth]{figures/20_e_s_m_k.png}           
+\caption{Maximum Mass and Polytropic Constant ($K_{NS}$) Relation}                
+\label{fig:20}
+\end{figure}
 
 \end{document}
 
