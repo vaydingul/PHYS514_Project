@@ -8,4 +8,4 @@ if __name__ == "__main__":
     newtonian_approach.demo()
 
     print("RELATIVISTIC APPROACH RESULTS:")
-    relativistic_approach.demo(2)
+    relativistic_approach.demo()

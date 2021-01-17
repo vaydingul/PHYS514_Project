@@ -102,21 +102,21 @@ def demo(N1 = 100, N2 = 200 ):
 
     ################################## PLOTTING #####################################
     p.figure_()
-    p.draw("scatter", [R_km[K_ix, :]], [M[K_ix, :]], xlabel = "Radius [km]", ylabel = "Mass [$M_\odot$]", title = " ".join(["Mass-Radius Relation\n$K_{NS} = $", "{0}".format(K_NS_list[K_ix])]), savefn = "report/figures/17_e_s_m_r.png")
+    p.draw("scatter", [R_km[K_ix, :]], [M[K_ix, :]], xlabel = "Radius [km]", ylabel = "Mass [$M_\odot$]", title = " ".join(["Mass-Radius Relation\n$K_{NS} = $", "{0}".format(K_NS_list[K_ix])]))
 
     p.figure_()
-    p.draw("scatter", [R_km[K_ix, :]], [Delta[K_ix, :]], xlabel = "Radius [km]", ylabel = "$\Delta$", title = " ".join(["Fractional Binding Energy and Radius Relation\n$K_{NS} = $","{0}".format(K_NS_list[K_ix])]), savefn = "report/figures/18_e_s_delta_r.png")
+    p.draw("scatter", [R_km[K_ix, :]], [Delta[K_ix, :]], xlabel = "Radius [km]", ylabel = "$\Delta$", title = " ".join(["Fractional Binding Energy and Radius Relation\n$K_{NS} = $","{0}".format(K_NS_list[K_ix])]))
 
     #p.figure_()
     #p.draw("scatter", [rho_SI], [M], xlabel = "Central Density [$\dfrac{kg}{m^3}$]", ylabel = "Mass [$M_\odot$]", title = "Mass and Central Density Relation")
 
     p.figure_()
-    p.draw("loglog", [rho_SI_stable, rho_SI_unstable], [M_stable, M_unstable], labels = ["Stable", "Unstable"], xlabel = "Central Density [$\dfrac{kg}{m^3}$]", ylabel = "Mass [$M_\odot$]", title = " ".join(["Mass and Central Density Relation\n$K_{NS} = $","{0}".format(K_NS_list[K_ix])]), savefn = "report/figures/19_e_ll_m_rho.png")
+    p.draw("loglog", [rho_SI_stable, rho_SI_unstable], [M_stable, M_unstable], labels = ["Stable", "Unstable"], xlabel = "Central Density [$\dfrac{kg}{m^3}$]", ylabel = "Mass [$M_\odot$]", title = " ".join(["Mass and Central Density Relation\n$K_{NS} = $","{0}".format(K_NS_list[K_ix])]))
 
     p.figure_()
     p.draw("scatter", [K_NS_list], [M_max], xlabel = "$K_{NS}$", ylabel = "$M_{max}$ [$M_\odot$]", title = "Maximum Mass and Polytopic Constant Relation")
     p.draw("plot", [np.array([K_NS_list[0], K_NS_list[-1]])], [np.array([M_max[M_max_allowable_ix][0], M_max[M_max_allowable_ix][0]])], color = "red")
-    p.draw("plot", [np.array([K_NS_list[M_max_allowable_ix][0], K_NS_list[M_max_allowable_ix][0]])], [np.array([M_max[0], M_max[-1]])], color = "red", savefn = "report/figures/20_e_s_m_k.png")
+    p.draw("plot", [np.array([K_NS_list[M_max_allowable_ix][0], K_NS_list[M_max_allowable_ix][0]])], [np.array([M_max[0], M_max[-1]])], color = "red")
 
     p.show_()
 
