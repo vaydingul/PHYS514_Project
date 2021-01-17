@@ -4,6 +4,8 @@
 # TL&DR
 All project-related deliverable scripts/documents are collected under *deliverables-scripts* [folder](https://github.com/vaydingul/PHYS514_Project/tree/main/deliverables-scripts).
 
+![Just a funny meme that I encountered in the web :p](report/figures/meme.jpg)
+
 # General Folder Structure
 
 ## *src*
