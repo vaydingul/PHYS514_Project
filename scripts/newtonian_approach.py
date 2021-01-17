@@ -11,7 +11,7 @@ from src import Solvers as s
 from src import Plotter as p
 from src import Constants as c
 
-def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
+def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1, show_fig = True, print_verbose = True, mass_constraint = 0.34):
 
 	"""
 	demo:
@@ -24,7 +24,9 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 	Input:
 		Kq_optimization_alternative = Optimization alternative to find K and q
 		CD_optimization_alternative = Optimization alternative to find K and q
-
+		show_fig = It determines whether graphs will show up or not
+		mass_constraint = It is the low mass region constraint, purely for testing purposes
+		
 	Output:
 			[]
 
@@ -40,7 +42,7 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 	mass = data[:, 1]
 
 	# Low mass part
-	low_mass_ix = mass < 0.34
+	low_mass_ix = mass < mass_constraint
 	
 	# WD data unit conversions
 	mass_kg, R_m, R_aer = u.wd_data_conversion(mass, logg)
@@ -70,10 +72,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 		# Conversion from A to K
 		K1 = u.Aq2K(A1, np.round(q1))
 		
-		# Verbose printing
-		print("============================================================================")
-		print("Curve fitting for K and q concurrently, based on Alternative 1")
-		print("Estimated:\nK = {0}\nq = {1}\nA = {2}".format(K1, q1, A1))
+		if print_verbose:
+			# Verbose printing
+			print("============================================================================")
+			print("Curve fitting for K and q concurrently, based on Alternative 1")
+			print("Estimated:\nK = {0}\nq = {1}\nA = {2}".format(K1, q1, A1))
 
 		# Calculation of mass based on the estimated K and q value
 		M_Kq_fit = s.mass_radius_relation(R=R_m, K=K1, q=q1)
@@ -97,10 +100,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 		# Conversion from A to K
 		K2 = u.Aq2K(A2, q_0)
 
-		# Verbose printing
-		print("============================================================================")
-		print("Curve fitting for K while q is fixed, based on Alternative 1")
-		print("Estimated:\nK = {0}\nq = {1}\nA = {2}".format(K2, q_0, A2))
+		if print_verbose:
+			# Verbose printing
+			print("============================================================================")
+			print("Curve fitting for K while q is fixed, based on Alternative 1")
+			print("Estimated:\nK = {0}\nq = {1}\nA = {2}".format(K2, q_0, A2))
 
 		# Calculation of mass based on the estimated K and q value
 		M_K_fit = s.mass_radius_relation(R=R_m, K=K2, q=q_0)
@@ -125,10 +129,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 		K1, q1 = s.white_dwarf_fit(
 		M=mass_kg[low_mass_ix], R=R_m[low_mass_ix], K=K_0, q=q_0, type="Kq", mode = Kq_optimization_alternative)
 
-		# Verbose printing
-		print("============================================================================")
-		print("Curve fitting for K and q concurrently, based on Alternative 2")
-		print("Estimated:\nK = {0}\nq = {1}".format(K1, q1))
+		if print_verbose:
+			# Verbose printing
+			print("============================================================================")
+			print("Curve fitting for K and q concurrently, based on Alternative 2")
+			print("Estimated:\nK = {0}\nq = {1}".format(K1, q1))
 
 		# Calculation of mass based on the estimated K and q value
 		M_Kq_fit = s.mass_radius_relation(R=R_m, K=K1, q=q1)
@@ -149,10 +154,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 		K2 = s.white_dwarf_fit(
 		M=mass_kg[low_mass_ix], R=R_m[low_mass_ix], K=K_0, q=q_0, type="K", mode = Kq_optimization_alternative)
 
-		# Verbose printing
-		print("============================================================================")
-		print("Curve fitting for K while q is fixed, based on Alternative 2")
-		print("Estimated:\nK = {0}\nq = {1}".format(K2, q_0))
+		if print_verbose:
+			# Verbose printing
+			print("============================================================================")
+			print("Curve fitting for K while q is fixed, based on Alternative 2")
+			print("Estimated:\nK = {0}\nq = {1}".format(K2, q_0))
 
 		# Calculation of mass based on the estimated K and q value
 		M_K_fit = s.mass_radius_relation(R=R_m, K=K2, q=q_0)
@@ -175,10 +181,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 	D1 = s.white_dwarf_fit(M=mass_kg[low_mass_ix], R=R_m[low_mass_ix],
 						K=K_0, q=q_0, rho_c_list=rho_c_list, D=D_0, type="D", mode = CD_optimization_alternative)
 
-	# Verbose printing
-	print("============================================================================")
-	print("Curve fitting for D while K and q are known, based on Alternative {0}".format(CD_optimization_alternative))
-	print("Estimated:\nK = {0}\nq = {1}\nD = {2}\nC = {3}".format(K_0, q_0, D1, u.KqD2C(K_0, q_0, D1)))
+	if print_verbose:
+		# Verbose printing
+		print("============================================================================")
+		print("Curve fitting for D while K and q are known, based on Alternative {0}".format(CD_optimization_alternative))
+		print("Estimated:\nK = {0}\nq = {1}\nD = {2}\nC = {3}".format(K_0, q_0, D1, u.KqD2C(K_0, q_0, D1)))
 
 	# Mass and radius calculation based on the known K, q and D vaues
 	MR = [s.mass_radius_relation(K=K_0, q=q_0, D=D1, rho_c=rho_c)
@@ -194,9 +201,11 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 	q_theo = q_0 # It is known anyway :p
 	D_theo = c.D # Theoretical value of D
 	K_theo = u.CqD2K(c.C, q_theo, D_theo) # Conversion from C, q, D to K
-	print("============================================================================")
-	print("Theoritical:\nK = {0}\nq = {1}\nD = {2}\nC = {3}".format(
-	K_theo, q_theo, D_theo, c.C))
+
+	if print_verbose:
+		print("============================================================================")
+		print("Theoritical:\nK = {0}\nq = {1}\nD = {2}\nC = {3}".format(
+		K_theo, q_theo, D_theo, c.C))
 
 	# Mass and radius calculation based on the theoretical K, q and D vaues
 	MR_theo = [s.mass_radius_relation(K=K_theo, q=q_theo, D=D_theo, rho_c=rho_c)
@@ -207,45 +216,45 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1):
 	###########################################################################
 	
 	################# PLOTTING ################################################ 
-	p.figure_()
-	p.draw(handle="loglog", x_list=[mass], y_list=[rho_c_Kq, rho_c_K], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
-			xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions", ls=" ")
+	if show_fig: 
+		p.figure_()
+		p.draw(handle="loglog", x_list=[mass], y_list=[rho_c_Kq, rho_c_K], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
+				xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions", ls=" ")
 
-	p.figure_()
-	p.draw(handle="loglog", x_list=[mass[low_mass_ix]], y_list=[rho_c_Kq[low_mass_ix], rho_c_K[low_mass_ix]], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
-			xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions\n[Only Low Mass Stars]",ls=" ")
+		p.figure_()
+		p.draw(handle="loglog", x_list=[mass[low_mass_ix]], y_list=[rho_c_Kq[low_mass_ix], rho_c_K[low_mass_ix]], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
+				xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions\n[Only Low Mass Stars]",ls=" ")
 
-	
-	p.figure_()
-	p.draw(handle="scatter", x_list=[mass], y_list=[rho_c_Kq, rho_c_K], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
-			xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions")
+		
+		p.figure_()
+		p.draw(handle="scatter", x_list=[mass], y_list=[rho_c_Kq, rho_c_K], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
+				xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions")
 
-	p.figure_()
-	p.draw(handle="scatter", x_list=[mass[low_mass_ix]], y_list=[rho_c_Kq[low_mass_ix], rho_c_K[low_mass_ix]], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
-			xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions\n[Only Low Mass Stars]")
+		p.figure_()
+		p.draw(handle="scatter", x_list=[mass[low_mass_ix]], y_list=[rho_c_Kq[low_mass_ix], rho_c_K[low_mass_ix]], labels=["Curve Fit for $K$ and $q$", "Curve Fit for $K$"],
+				xlabel="Mass [$M_\odot$]", ylabel="Central Density [$\dfrac{kg}{m^3}$]", title="Central Density Distributions\n[Only Low Mass Stars]")
 
-	p.figure_()
-	p.draw(handle="loglog", x_list=[R_aer], y_list=[mass, M_Kq_fit/c.SOLAR_MASS, M_K_fit/c.SOLAR_MASS, M_D_fit/c.SOLAR_MASS, M_theo/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
-			xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions", ls=" ")
+		p.figure_()
+		p.draw(handle="loglog", x_list=[R_aer], y_list=[mass, M_Kq_fit/c.SOLAR_MASS, M_K_fit/c.SOLAR_MASS, M_D_fit/c.SOLAR_MASS, M_theo/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
+				xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions", ls=" ")
 
-	p.figure_()
-	p.draw(handle="loglog", x_list=[R_aer[low_mass_ix]], y_list=[mass[low_mass_ix], M_Kq_fit[low_mass_ix]/c.SOLAR_MASS, M_K_fit[low_mass_ix]/c.SOLAR_MASS, M_D_fit[low_mass_ix]/c.SOLAR_MASS, M_theo[low_mass_ix]/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
-			xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions\n[Only Low Mass Stars]", ls=" ")
+		p.figure_()
+		p.draw(handle="loglog", x_list=[R_aer[low_mass_ix]], y_list=[mass[low_mass_ix], M_Kq_fit[low_mass_ix]/c.SOLAR_MASS, M_K_fit[low_mass_ix]/c.SOLAR_MASS, M_D_fit[low_mass_ix]/c.SOLAR_MASS, M_theo[low_mass_ix]/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
+				xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions\n[Only Low Mass Stars]", ls=" ")
 
-	p.figure_()
-	p.draw(handle="scatter", x_list=[R_aer], y_list=[mass, M_Kq_fit/c.SOLAR_MASS, M_K_fit/c.SOLAR_MASS, M_D_fit/c.SOLAR_MASS, M_theo/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
-			xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions")
+		p.figure_()
+		p.draw(handle="scatter", x_list=[R_aer], y_list=[mass, M_Kq_fit/c.SOLAR_MASS, M_K_fit/c.SOLAR_MASS, M_D_fit/c.SOLAR_MASS, M_theo/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
+				xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions")
 
-	p.figure_()
-	p.draw(handle="scatter", x_list=[R_aer[low_mass_ix]], y_list=[mass[low_mass_ix], M_Kq_fit[low_mass_ix]/c.SOLAR_MASS, M_K_fit[low_mass_ix]/c.SOLAR_MASS, M_D_fit[low_mass_ix]/c.SOLAR_MASS, M_theo[low_mass_ix]/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
-			xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions\n[Only Low Mass Stars]")
+		p.figure_()
+		p.draw(handle="scatter", x_list=[R_aer[low_mass_ix]], y_list=[mass[low_mass_ix], M_Kq_fit[low_mass_ix]/c.SOLAR_MASS, M_K_fit[low_mass_ix]/c.SOLAR_MASS, M_D_fit[low_mass_ix]/c.SOLAR_MASS, M_theo[low_mass_ix]/c.SOLAR_MASS], labels=["Actual Data", "Curve Fit for $K$ and $q$", "Curve Fit for only $K$", "Curve Fit for only $D$", "Theoretical Result"],
+				xlabel="Radius [Average Earth Radius]", ylabel="Mass [$M_\odot$]", title="Mass Distributions\n[Only Low Mass Stars]")
 
 
-	p.show_()
+		p.show_()
 
 
 if __name__ == "__main__":
-	np.warnings.filterwarnings('ignore')
 	demo(1, 1)
 
 

@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter
 
 # String to plt.function dictionary
-handle_dict = {"scatter":plt.scatter, "plot":plt.plot, "semilogx":plt.semilogx, "semilogy":plt.semilogy,"loglog":plt.loglog}
+handle_dict = {"scatter":plt.scatter, "plot":plt.plot, "semilogx":plt.semilogx, "semilogy":plt.semilogy,"loglog":plt.loglog,
+                "bar":plt.bar}
 # The list of markers to be used for each plot
 markers = ["o", "^", "h", "s", ".", "p"]
 
@@ -34,7 +35,7 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
         []
 
     """
-    handle = handle_dict[handle]
+    handle_ = handle_dict[handle]
 
 
     # Plot counter
@@ -54,8 +55,14 @@ def draw(handle, x_list, y_list, labels=None, xlabel=None, ylabel=None, title=No
 
 
     for (x_, y_) in zip(x_list, y_list):
-        handle(x_, y_, label=labels_[cnt], marker=markers[cnt], **kwargs)
-        cnt += 1
+        if handle != "bar":
+            handle_(x_, y_, label=labels_[cnt], marker=markers[cnt], **kwargs)
+            cnt += 1
+        else:
+            # Here can be seperated as plots which are able to support
+            # and plots that are not
+            handle_(x_, y_, label=labels_[cnt], **kwargs)
+            
 
 
     if xlabel is not None:

@@ -2,7 +2,13 @@
  The term project of the Computational Physics (PHYS514) course. -- Koc University
 
 # TL&DR
-All project-related deliverable scripts/documents are collected under *deliverables-scripts* [folder](https://github.com/vaydingul/PHYS514_Project/tree/main/deliverables-scripts).
+
+All project-related deliverable scripts/reports are collected under *scripts* [folder](https://github.com/vaydingul/PHYS514_Project/tree/main/scripts).
+
+**It is recommended to read the [project report](https://github.com/vaydingul/PHYS514_Project/tree/main/scripts/ps_report.pdf) before observing the visualization scripts.**
+
+There is a script called [main.py](ttps://github.com/vaydingul/PHYS514_Project/tree/main/scripts/main.py) which demonstrates the experiments conducted on *Newtonian approach* and *Relativistic approach*. This script basically calls the function called *demo()* in each individual script in the same folder. The input arguments that can be passed to each individual *demo()* function can be observed in their parent scripts.
+
 
 ![Just a funny meme that I encountered in the web :p](report/figures/meme.jpg)
 

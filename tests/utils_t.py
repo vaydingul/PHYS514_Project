@@ -1,11 +1,13 @@
-#import sys
-#sys.path.insert(1,"./")
+import sys
+
+sys.path.insert(1,"./")
+sys.path.insert(1,"../")
 
 from typing import List
 import unittest
 import numpy as np
 
-from ..src import Utils as u
+from src import Utils as u
 
 class UtilsTest(unittest.TestCase):
 
