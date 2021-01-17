@@ -61,7 +61,7 @@ def demo(N1 = 100, N2 = 200 ):
 
     # Iteration for different central pressures
     for (ix1, K_NS) in enumerate(K_NS_list):
-        print(ix1)
+        #print(ix1)
         for (ix2, p_) in enumerate(p_gu):
 
             # Solution of the TOV equations
