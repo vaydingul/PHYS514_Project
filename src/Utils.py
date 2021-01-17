@@ -46,10 +46,10 @@ def read_dw_data(fname, out_type="np"):
         return data
 
 
-def general_conversion(val_mass, val_logg):
+def wd_data_conversion(val_mass, val_logg):
     """
-    general_conversion:
-    mass_kg, R_m, R_aer = general_conversion(mass, logg)
+    wd_data_conversion:
+    mass_kg, R_m, R_aer = wd_data_conversion(mass, logg)
 
     This function perform the following processes:
         - It converts the log(g) data to radius in ´meters´
@@ -70,7 +70,7 @@ def general_conversion(val_mass, val_logg):
         # Data reading and partitioning
         data = u.read_dw_data(DATA_PATH)
         logg = data[:,0]; mass = data[:,1]; mean_mass = np.mean(mass)
-        mass_kg, R_m, R_aer = u.general_conversion(mass, logg)
+        mass_kg, R_m, R_aer = u.wd_data_conversion(mass, logg)
 
 
     """

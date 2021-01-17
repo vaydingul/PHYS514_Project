@@ -64,7 +64,7 @@ def pressure_equation(r, m, rho):
 
 
 
-def density_equation(r, rho, m, C, q, D):
+def density_equation(r, rho, m, C, q, D, mode):
     """
 
     density_equation:
@@ -82,6 +82,7 @@ def density_equation(r, rho, m, C, q, D):
         rho = Density of the star 
         m = Mass of the star
         C, q, D = Constants
+        mode = It specifies the optimization alternative which is discussed in report
 
     Output:
 
@@ -96,12 +97,18 @@ def density_equation(r, rho, m, C, q, D):
     x = (rho/D) ** (1 / q)
 
     # Following s1, s2, s3 and s4 contains the derivative of the pressure density relation w.r.t. x
-    s1 = ((2 * x ** 2 - 3) * ((x ** 2 + 1) ** 0.5))
-    s2 = ((x) * (4 * x) * ((x ** 2 + 1) ** 0.5))
-    s3 = ((x) * (2 * x ** 2 - 3) * (0.5) * (2 * x) * ((x ** 2 + 1) ** -0.5))
-    s4 = ((3) / (np.sqrt(x ** 2 + 1)))
-    dpdx = C * (s1 + s2 + s3 + s4)
-    #dpdx = 8 * C * (x ** 4)
+    if mode == 1:
+        # Based on alternative 1
+        s1 = ((2 * x ** 2 - 3) * ((x ** 2 + 1) ** 0.5))
+        s2 = ((x) * (4 * x) * ((x ** 2 + 1) ** 0.5))
+        s3 = ((x) * (2 * x ** 2 - 3) * (0.5) * (2 * x) * ((x ** 2 + 1) ** -0.5))
+        s4 = ((3) / (np.sqrt(x ** 2 + 1)))
+        dpdx = C * (s1 + s2 + s3 + s4)
+    else:
+        # Based on Alternative 2
+        dpdx = 8 * C * (x ** 4)
+
+
     # Trivial differentiation
     dxdrho = (D ** (-1/q)) * (rho ** ((1/q) - 1)) / (q)
 
@@ -119,7 +126,7 @@ def density_equation(r, rho, m, C, q, D):
 
 
 
-def mass_density_equation(r, m_rho, C, q, D):
+def  mass_density_equation(r, m_rho, C, q, D, mode):
     """
 
     mass_density_equation:
@@ -135,6 +142,7 @@ def mass_density_equation(r, m_rho, C, q, D):
         r = Radius of the star
         m_rho = Joint representation of the propagated variables 
         C, q, D = Constants
+        mode = It specifies the optimization alternative which is discussed in report
 
     Output:
 
@@ -149,7 +157,10 @@ def mass_density_equation(r, m_rho, C, q, D):
     m = m_rho[0]
     rho = m_rho[1]
     # nan_to_num function is used to surpass irregularities ( but, not quite sure :p)
-    return np.nan_to_num(np.array([mass_equation(r, rho), density_equation(r, rho, m, C, q, D)]))
+    return [np.nan_to_num(mass_equation(r, rho)), np.nan_to_num(density_equation(r, rho, m, C, q, D, mode))]
+    
+    # I could not figure out why, but below option is not working :(
+    #return np.nan_to_num(np.array([mass_equation(r, rho), density_equation(r, rho, m, C, q, D)]))
 
 
 
@@ -302,7 +313,7 @@ def calculate_rho_c(M=None, R=None, K=None, n=None):
         return ((R) / ((((K * (n + 1)) / (4 * np.pi * c.G)) ** 0.5) * (xi_star))) ** ((2 * n) / (1 - n))
 
 
-def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=None, type="Kq"):
+def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=None, type="Kq", mode = 1):
     """
     white_dwarf_fit:
 
@@ -319,6 +330,7 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=N
         K, C, q, D, A = Constant
         rho_c_list = Rho_c sweep for D calculation
         type = It specifies which parameters are optimized
+        mode = It specifies the optimization alternative which is discussed in report
 
     Output:
 
@@ -327,45 +339,61 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=N
     Example:
         []
     """
-
-    if K is not None:
+    
+    if (K is not None) or (A is not None):
 
         if q is not None:
 
             if D is None:
+                
                 if type == "Kq":
-                    # If K and q are to be optimized
 
-                    # Initial guess for K and q
-                    y_0 = [K, q]
+                    if mode == 2:
+                        
+                        # If K and q are to be optimized
 
-                    # Monkey patching
-                    def mrr_(R, K, q): return mass_radius_relation(
-                        R=R, K=K, q=q)
+                        # Initial guess for K and q
+                        y_0 = [K, q]
+
+                        # Monkey patching
+                        def mrr_(R, K, q): return mass_radius_relation(
+                            R=R, K=K, q=q)
+
+                    else: 
+                        # If A and q are to be optimized
+                        y_0 = [A, q]
+                        def mrr_(R, A, q): return mass_radius_relation(R = R, q = q, A = A)
+
 
                 elif type == "K":
-                    # If K is to be optimized for a given q value
+                    if mode == 2:
 
-                    # Initial guess for K
-                    y_0 = [K]
+                        # If K is to be optimized for a given q value
 
-                    # Monkey patching
-                    def mrr_(R, K): return mass_radius_relation(R=R, K=K, q=q)
+                        # Initial guess for K
+                        y_0 = [K]
 
+                        # Monkey patching
+                        def mrr_(R, K): return mass_radius_relation(R=R, K=K, q=q)
+                    else:
 
+                        # If A is to be optimized for a given q
+                        y_0 = [A]
+                        def mrr_(R, A): return mass_radius_relation(R = R, q = q, A = A)
             else:
 
                 if type == "D":
+
                     # If D is to be optimized for a given K and q value
 
                     # Initial guess for D
                     y_0 = [D]
 
                     # Monkey patching - 1
-                    def mrr(R, K, q, D):
+                    def mrr(R, K, q, D, mode):
 
                         MR = [mass_radius_relation(
-                            K=K, q=q, D=D, rho_c=rho_c) for rho_c in rho_c_list]
+                            K=K, q=q, D=D, rho_c=rho_c, mode = mode) for rho_c in rho_c_list]
                         MR = np.array([*MR])
                         M_ = MR[:, 0]
                         R_ = MR[:, 1]
@@ -375,28 +403,17 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=N
                         return M_spline
 
                     # Monkey patching to Monkey Patching - 1
-                    def mrr_(R, D): return mrr(R=R, K=K, q=q, D=D)
-    else:
-        if A is not None:
+                    def mrr_(R, D): return mrr(R=R, K=K, q=q, D=D, mode = mode)
+                
 
-            if type == "Aq":
-                # If A and q are to be optimized
-                y_0 = [A, q]
-                def mrr_(R, A, q): return mass_radius_relation(R = R, q = q, A = A)
-
-            elif type == "A":
-                # If A is to be optimized for a given q
-                y_0 = [A]
-                def mrr_(R, A): return mass_radius_relation(R = R, q = q, A = A)
-
-
+    
     # Solution of the curve-fitting problem
     popt, _ = curve_fit(f=mrr_, xdata=R, ydata=M, p0=y_0)
 
     return popt
 
 
-def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A = None):
+def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A = None, mode = 1):
     """
     mass_radius_relation:
 
@@ -411,6 +428,7 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A =
         R = Radius vector to be fitted
         K, C, q, D, A = Constant
         rho_c = Rho_c
+        mode = It specifies the optimization alternative which is discussed in report
 
     Output:
 
@@ -475,7 +493,7 @@ def mass_radius_relation(R=None, K=None, C=None, q=None, D=None, rho_c=None, A =
                         C = 5 * K * (D ** (5 / q)) / 8
                         # Mass and Density ODE solution for a given
                         # rho_c and C, q, and D
-                        r, m_rho = solve_m_rho(rho_c, C, q, D)
+                        r, m_rho = solve_m_rho(rho_c, C, q, D, mode)
 
                         # Low level function
                         return mass_radius_relation__(r, m_rho)
@@ -527,7 +545,7 @@ def mass_radius_relation__(r, m_rho):
 def _mass_radius_relation(R, A, n):
     """
         It calculates the mass based on the proportional
-        form of  Lane-Emden equation
+        form of mass-radius relation:
 
         M = A * R ^ ((3 - n) / (1 - n))
     """
@@ -535,7 +553,7 @@ def _mass_radius_relation(R, A, n):
     M  = A * (R ** ((3 - n) / (1 - n)))
     return M 
 
-def solve_m_rho(rho_c, C, q, D):
+def solve_m_rho(rho_c, C, q, D, mode):
     """
     solve_m_rho:
 
@@ -548,6 +566,7 @@ def solve_m_rho(rho_c, C, q, D):
     Input:
         rho_c = Initial value of density equation
         C, q, D = Constants arguments
+        mode = It specifies the optimization alternative which is discussed in report
 
     Output:
 
@@ -558,7 +577,7 @@ def solve_m_rho(rho_c, C, q, D):
         []
     """
     # Termination criteria for the surface
-    def is_surface(r, m_rho, C, q, D): return m_rho[1] - 1
+    def is_surface(r, m_rho, C, q, D, mode): return m_rho[1] - 1
     is_surface.terminal = True
     is_surface.direction = 0
 
@@ -569,7 +588,7 @@ def solve_m_rho(rho_c, C, q, D):
 
     # Solution of the IVP
     r = solve_ivp(fun=mass_density_equation, t_span=r_span,
-                  y0=m_rho_0, events=is_surface, args=(C, q, D))
+                  y0=m_rho_0, events=is_surface, args=(C, q, D, mode))
 
     if r.status >= 0:
         return r.t, r.y
