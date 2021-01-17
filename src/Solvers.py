@@ -391,14 +391,18 @@ def white_dwarf_fit(M, R, K=None, C=None, q=None, D=None, A = None, rho_c_list=N
 
                     # Monkey patching - 1
                     def mrr(R, K, q, D, mode):
-
+                        
+                        # Produce a mass distribution based on the fed
+                        # central density distribution
                         MR = [mass_radius_relation(
                             K=K, q=q, D=D, rho_c=rho_c, mode = mode) for rho_c in rho_c_list]
                         MR = np.array([*MR])
                         M_ = MR[:, 0]
                         R_ = MR[:, 1]
+                        # Fit a spline curve to that generated data
                         sp_f = interp1d(x=R_, y=M_, kind="cubic",
                                         fill_value="extrapolate")
+                        # Extrapolate the whole data on that spline
                         M_spline = sp_f(R)
                         return M_spline
 
@@ -679,6 +683,11 @@ def solve_lane_emden(n):
         return r.t, r.y
     else:
         print("It seems solver is not able to obtain a solution!")
+
+
+
+
+
 
 
 

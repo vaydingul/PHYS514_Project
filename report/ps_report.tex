@@ -25,7 +25,7 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \hypersetup{
-    colorlinks=false,       % false: boxed links; true: colored links
+    colorlinks=false,      % false: boxed links; true: colored links
     linkcolor=blue,        % color of internal links
     citecolor=blue,        % color of links to bibliography
     filecolor=magenta,     % color of file links
@@ -95,12 +95,20 @@ Date: \@date
 
 
 \begin{abstract}
-    Abstract.
+    In this study, the properties of the different stages of the stars were investigated based on the analytical and numerical approaches, as well as classical and relativistic approaches. In the first part of the study, the principal physical relations that governs the life of a star were discussed, and several numerical experiments were conducted to estimate the emprical constants which belongs to the equation of state of the white dwarfs. In the second part of the study, the main physical relations based on the relativistic approaches were discussed to investigate the properties of the neutron stars. Finally, it was found out that the numerical approaches are tended to match with the analytical investigations as long as the problem complexity is not too high and initial guesses are close.
 \end{abstract}
 \section{Introduction}
+\paragraph{} A star is an astronomical object, which can be investigated from various aspects. These spheroidal luminous objects which are constructed by the plasma are glued by its own gravity. The main source of their luminosity is the thermonuclear reactions that took place on the star. Stars experience different stages throughout their life. One of these stages are called \textit{white dwarfs (WD)}. White dwarfs are generally observed when the relatively low mass stars are the subject and the thermonuclear energy production stops. In the white dwarf stage, the main mechanism that is governed on the star changes, and different approaches start to take place. The further evolution of the white dwarfs may result in another stage called \textit{neutron stars (NS)}. In neutron stars, the classical \textit{Newtonian} physics starts to become insufficient, and investigations are applied based on the relativistic approach.
+
+\begin{figure}[H] 
+\centering \includegraphics[width=0.5\columnwidth]{figures/sun.jpg}           
+\caption{Sun: The closest star to the Earth}                
+\label{fig:label}
+\end{figure}
 
 
 \section{Mathematical Background}
+\label{sec:math}
 \subsection{Newtonian Approach}
 
 \subsubsection{Derivation of \textit{Lane-Emden Equation}}
@@ -316,7 +324,7 @@ where
 
 where $x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}$
 
-\paragraph{} Finally, if the $x<<1$ , then the \eqref{eq:P-rho-low} can be reduced to via \textit{series expansion}:
+\paragraph{} Moreover, if the $x<<1$ , then the \eqref{eq:P-rho-low} can be reduced to via \textit{series expansion}:
 
 \begin{equation*}
     P = \frac{8}{5} \left(\frac{\rho}{D}\right)^{\frac{5}{q}}
@@ -329,6 +337,13 @@ where $x = \left(\frac{\rho}{D}\right)^{\frac{1}{q}}$
 \end{equation}
 
 where $K_* = \frac{8C}{5D^{\frac{5}{q}}}$ and $n_* = \frac{q}{5-q}$
+
+\paragraph{} Finally, theoretically, it can be shown that:
+
+\begin{align*}
+    C = \frac{m_e^4 c^5}{24\pi^2\hbar^3} & \; \; \; D = \frac{m_u m_e^3 c^3 \mu_e}{3 \pi^2 \hbar^3}
+\end{align*}
+
 
 \subsection{Relativistic Approach}
 
@@ -409,8 +424,9 @@ where $m_p$ represents the baryonic mass. Finally, the \textit{fractional bindin
 
 
 \section{Experiments}
+\label{sec:exps}
 \subsection{Interpreting the Raw Data}
-\paragraph{} First of all, it should be acknowledged that the interpreting of the raw data is a very hard practice. In this section, the subject data will be briefly reviewed and the numerical approachs that is used to process the data will be explained.
+\paragraph{} First of all, it should be acknowledged that the interpreting of the raw data is a very difficult practice. In this section, the subject data will be briefly reviewed and the numerical approachs that is used to process the data will be explained.
 
 \subsubsection{White Dwarf Data}
 
@@ -571,10 +587,9 @@ where
 \subsection{Calculation of Mass and Radius in Relativistic Approach}
 \paragraph{} Tha mass and radius can simply be calculated via the integration of the \eqref{eq:tov} from center to the outer surface, that is until $p(R) = 0$. Moreover, all other calculations can be implemented on the calculated mass and radius values.
 \section{Results and Discussion}
-\subsection{Experimental Results Based on the Newtonian Approach}
-% TODO: Talk about the difference between fixed q and unfixed q.
-
 \label{sec:resdis}
+\subsection{Experimental Results Based on the Newtonian Approach}
+
 
 \paragraph{} From Figure \ref{fig:12} to Figure \ref{fig:11_12}, all figures include side-by-side graphics which represents the whole dataset and the portion of the dataset which satisfies the below relation:
 
@@ -693,7 +708,7 @@ where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
     \label{tab:all_param}
     \end{table}
 
-\paragraph{} Finally, the \textit{Chandrasekhar limit} can be observed more clearly in Figure \ref{fig:chandrasekhar}, which corresponds to approximately $M_{ch} \approx 1.5 M_\odot$
+\paragraph{} Finally, the \textit{Chandrasekhar limit} can be observed more clearly in Figure \ref{fig:chandrasekhar}, which corresponds to approximately $M_{ch} \approx 1.5 M_\odot$, although it is known as $M_{ch} \approx 1.4 M_\odot$, theoretically.
 
 \begin{figure}[H] 
    \centering \includegraphics[width=0.7\columnwidth]{figures/7_n_ll_ms_r_chandrasekhar.png}           
@@ -797,6 +812,7 @@ where $M_{threshold}$ is determined as $M_{threshold} = 0.34 \; M_\odot$.
 
 \section{Conclusion}
 
+\paragraph{} All in all, the different properties of the life of the different stars were inspected and visualized via using the analytical and numerical tools. In Section \ref{sec:math}, the analytical tools that helps to investigate the properties of a star was analyzed. In Section \ref{sec:exps} and Section \ref{sec:resdis}, the numerical experiments were explained and the estimaton results of the emprical parameters were presented in the conjunction with the theoritical approximations. It was found out that, for \textit{non-linear curve-fitting} implementations, the initial guesses plays a huge role in estimation accuracy. Finally, generally, the numerical methods performed well in approximating/estimating the theoretical results.
 
 \appendix
 \section{Additional Estimation Results Based on Other Alternatives}
