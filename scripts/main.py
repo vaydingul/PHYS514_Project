@@ -1,5 +1,5 @@
 import numpy as np
-from . import newtonian_approach, relativistic_approach
+import newtonian_approach, relativistic_approach
 
 
 if __name__ == "__main__":
@@ -8,4 +8,4 @@ if __name__ == "__main__":
     newtonian_approach.demo()
 
     print("RELATIVISTIC APPROACH RESULTS:")
-    relativistic_approach.demo()
+    relativistic_approach.demo(2)

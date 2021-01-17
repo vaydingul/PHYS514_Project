@@ -34,7 +34,7 @@ def demo(Kq_optimization_alternative = 1, CD_optimization_alternative = 1, show_
 			[]
 	"""
 	# Data path
-	DATA_PATH = "data/white_dwarf_data.csv"
+	DATA_PATH = "../data/white_dwarf_data.csv"
 
 	# Data reading and partitioning
 	data = u.read_dw_data(DATA_PATH)
