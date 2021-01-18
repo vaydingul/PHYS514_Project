@@ -1,4 +1,0 @@
-- Organize ´scripts´ folder, make it more robust to user input/preferences
-- Write abstract, introduction and conclusion
-- Try another template for report
-- ...
